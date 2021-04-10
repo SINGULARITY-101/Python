@@ -1,0 +1,83 @@
+070 MODULES AND PACKAGES
+
+*We will be writing our own modules and packages 
+
+*Modules are just .py scripts that you call in another .py script while packages are a collection of modules 
+
+
+
+
+
+*IMPORTING FROM A MODULE
+
+ -SYNTAX
+
+    from <module_name> import <function>
+
+    function()
+
+
+
+
+
+
+
+
+*If you have a really large script, its better you don't put everything in a large .py file instead it would be better if you split it up between multiple .py files (modules)
+
+*We can aggregate different modules to create a package for more advaced organisation 
+
+
+
+
+
+
+
+
+*Now when you will be creating a package using the tutorial, you will have to make a bunch of folders like "MyMainPackage" and "SubPackage"
+
+*Now since these are just folders, we need to let Python know that we want to treat these folders not just as a normal folder but as an actual package 
+
+*To do that inside the "MyMainPackage" and "SubPackage" folder you will have to create a special file "__init__.py"
+
+*You don't actually need to write anything in this file, it just needs to be there so that when Python goes searching through these packages, it understands that it is not just a normal folder, it is a package 
+
+
+
+
+
+
+
+
+*"myprogram.py" can be imagined as the main .py script that we want to run 
+
+*We will be importing from various modules but for better organisation its better if you aggregate various modules into packages 
+
+*Packages are a special directory that have the "__init__.py" file inside along with different modules
+
+
+
+
+
+
+
+
+
+*IMPORTING FROM A PACKAGE
+
+ -From "MyMainPackage"
+
+
+     from MyMainPackage import some_main_script
+
+     some_main_script.function()
+
+
+
+
+ -From "SubPackage"
+
+
+     from MyMainPackage.SubPackage import my_sub_script
+
+     my_sub_script.function()

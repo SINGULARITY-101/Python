@@ -1,0 +1,387 @@
+082 DECORATORS
+
+
+*Imagine you created a simple function:-
+
+ def simple_func():
+	#Do simple stuff
+	return something
+
+
+
+
+
+
+
+
+*Now you want to add more functionality to it. What you can do is add more code to the   original function while keeping the old code intact:-
+
+ def simple_fun():
+	#Do more stuff
+	#Do simple stuff
+	return something
+
+*But if you do this, you will no longer be able to call your original function
+
+
+
+
+
+
+
+
+*OR you can create a brand new function that contains the old code, and then add new code to  it 
+
+*The problem with this is that now you have to recreate the entire funtion all over again  which is not ideal
+
+
+
+
+
+
+
+
+
+*After using any of the above methods, what if in the future you want to remove that new  functionality?
+
+*You would need to delete the new code manually or make sure that you that you have the old  function available
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*Python has decorators that allow you to tack on extra functionality to an already existing  function 
+
+*They use the @opeartor and are then placed on top of the original function 
+
+*Now you can easily add on extra functionality with a decorator:-
+
+
+ @some_decorator
+
+ def simple_func():
+	#Do simple stuff
+	return something 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*ASSIGNING FUNCTIONS TO VARIABLES 
+
+ -When you define a function and call it without (), you only get the information about the   function and you are not actually executing it 
+
+ -You can use this functionality to assign functions to other variables and then execute       them off that variable 
+
+
+
+  def hello():
+	return "Hello!"
+
+
+  greet=hello
+  greet()
+
+
+
+  OUTPUT:- 'Hello!'
+
+
+
+  del hello
+  greet()
+
+
+
+  OUTPUT:- 'Hello!'
+
+
+
+ -Even though we deleted the name hello, the name greet still points to our original           function object. It is important to know that functions are objects that can be passed to    other objects. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*FUNCTIONS WITHIN FUNCTIONS
+
+
+ def hello(name="Jose"):
+    print("The hello() function has been executed")
+    
+    def greet():
+        return "\t This is the greet() function inside hello!"
+    
+    def welcome():
+        return "\t This is welcome() inside hello!"
+    
+    print(greet())
+    print(welcome())
+    print("This is the end of the hello function")
+
+
+
+ hello()
+
+ OUTPUT: The hello() function has been executed
+	 	This is the greet() function inside hello!
+	 	This is welcome() inside hello!
+	  This is the end of the hello function
+
+ 
+
+
+ -greet() and welcome() are defined inside the hello function. Which means their scope is   limited to the hello function. greet() and welcome() can only be executed inside hello
+
+
+ -In order to access them outside hello, we will have to return them 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*RETURNING FUNCTIONS
+
+
+ -We will be returning a function and assigning it to a variable 
+
+
+  
+ def hello(name="Jose"):
+    print("The hello() function has been executed")
+    
+    def greet():
+        return "\t This is the greet() function inside hello!"
+    
+    def welcome():
+        return "\t This is welcome() inside hello!"
+    
+    print("I am going to return a function!!")
+    
+    if name == "Jose":
+        return greet
+    else:
+        return welcome
+
+
+
+
+
+ my_new_func = hello("Jose")
+
+
+ OUTPUT:- The hello() function has been executed
+	  I am going to return a function!!
+
+
+
+
+
+
+ -my_new_func is now pointing to the greet() function inside hello
+
+ 
+
+
+
+
+  print(my_new_func())
+
+
+  OUTPUT:-	This is the greet() function inside hello!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*FUNCTIONS AS ARGUMENTS 
+
+ def hello():
+	print("Hi jose!")
+
+ def other(some_defined_func):
+	print("Other code runs here")
+	print(some_defined_func())
+
+
+
+
+
+ other(hello)
+
+
+
+
+ OUTPUT:- Other code runs here
+	  Hi Jose!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*CREATING A DECORATOR
+
+
+
+ def new_decorator(original_func):
+    
+    ##EXTRA FUNCTIONALITY TO BE ADDED TO THE ORIGINAL FUNCTION
+    def wrap_func():
+        
+        print("Some extra code before the original function")
+        
+        original_func()
+        
+        print("Some extra code after the original function")
+        
+    return wrap_func
+
+ 
+
+
+
+ def func_needs_decorator():
+    print("I want to be decorated!")
+
+
+
+
+
+ decorated_function = new_decorator(func_needs_decorator)
+
+
+
+
+
+ decorated_function()
+
+
+ OUTPUT:- Some extra code before the original function
+	  I want to be decorated!
+	  Some extra code after the original function
+  
+
+
+
+
+
+
+ -The `new_decorator()` function is taking in the `function_needs_decorator` as the       `original_func` and then it returns a wrapped version of the `original_func` with the       added functionality
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ @new_decorator          
+
+ def func_needs_decorator():
+    print("I want to be decorated!")
+
+
+
+
+
+
+ func_needs_decorator()
+
+
+ OUTPUT:- Some extra code before the original function
+	  I want to be decorated!
+	  Some extra code after the original function
+
+
+
+
+
+
+ -What the `@new_decorator` keyword is doing when you put it on top of a function, is that   it will pass the function as an argument to the `new_decorator()` function, add some extra   functionality to it, wrap it in a function and then returns the wrapped version of the     function
+
+
+
+
+
+
+ -And if at any point you want to turn off that additional functionality, you can just   remove `@new_decorator`
+
+  Generally, you won't be doing the coding of the `new_decorator()` , `wrap_func()` etc. You   will be adding decorator from existing libraries 
+

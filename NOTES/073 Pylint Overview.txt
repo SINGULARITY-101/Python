@@ -1,0 +1,52 @@
+075 PYLINT OVERVIEW
+
+
+*As you begin to expand to larger multi-file projects it becomes important to have tests in  place
+
+*This way as you make changes or update your code, you can run your test files to make sure  previous code still runs as expected
+
+*There are several testing tools, we will focus on two:-
+
+  -pylint: This is a library that looks at your code and reports back possible issues
+
+  -unittest: This built-in library will allow you to test your own programs and check if you              are getting desired outputs 
+
+
+
+
+*pylint can be used to check your code for possible errors and styling 
+
+*By styling, we mean the set of style convention rules of Python known as "PEP-8"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*INSTALLING PYLINT
+
+   pip install pylint
+
+
+
+
+
+*USING PYLINT IN TERMINAL
+
+ - If you are using a newer version of pylint, the report sections is disabled by default so    you have to activate it manually
+
+      pylint simple1.py --reports=yes
+
+ -You will get a lot of information about your code and in the end you will get a rating
+
+ -It is better not to mix white spaces and tabs (mixed indentation). Pylint does not like     mixed indentation

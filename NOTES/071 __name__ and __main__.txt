@@ -1,0 +1,49 @@
+071 __name__ and __main__
+
+
+*An often confusing part of Python is a mysterious line of code
+
+  if __name__ == "__main__":
+
+
+
+
+
+
+
+*Sometimes when you are importing from a module, you would like to know whether a module's function is being used as an import, or if you are using the original .py file of that module 
+
+
+*When you call a .py script in terminal, all of the code at indentation level 0 is going to get run. Functions and classes are automatically defined at indentation level 0 so they get defined as well 
+
+
+*So unlike other languages, Python does not have any main() function that you call at the top of your script that gets run automatically
+
+
+*Instead all the code at indentation level 0 gets run when you call the script file 
+
+
+
+
+
+
+
+
+
+
+*In python there is built-in variable called __name__ which gets assigned to a string depending on how you are running the actual script and if you run the script directly (means going in the terminal and writing "python one.py") following opeartion will happen in the background:
+
+
+ __name__= "__main__"
+
+
+
+*So we can have an if block to check if a .py file is being run directly or not:
+
+ if __name__=="__main__":
+   myfunc()
+
+
+
+*So what people do to organise their codes better is first define all the functions they need and at the bottom of the file they put this if condition and call all the defined functions in that if block
+

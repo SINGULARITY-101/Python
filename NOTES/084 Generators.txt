@@ -1,0 +1,365 @@
+084 GENERATORS
+
+*A generator in Python allows us to generate a sequence of values overtime instead of  creating an entire sequence and holding it in memory. The main difference in syntax will be  the use of the yield statement 
+
+*A generator function when compiled doesn't actually return a value and then exits. Instead   generator functions will automatically suspend and resume their execution from the last  point of value generation
+
+*The advantage is that instead of having to compute an entire series of values up front and  hold it in memory, the  generator computes one value and waits until the next value is  called for 
+
+
+
+
+FOR EXAMPLE
+
+The range() function doesn't produce a list in memory for all the values from start to stop
+
+Instead it just keeps track of the last number and the step size to provide a flow of numbers
+
+So basically it generates numbers overtime instead of having a giant list in memory 
+
+
+
+
+
+
+
+*If the user needs the list, they can transform the generator to a list like this :-
+  
+    list(range(0,10))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*INEFFICIENT FUNCTION
+
+
+def cube(n):
+    result=[]
+    for item in range(n):
+        result.append(item**3)
+        
+    return result
+
+
+cube(10)
+
+
+
+OUTPUT:- [0, 1, 8, 27, 64, 125, 216, 343, 512, 729]
+
+
+
+
+-This giant list is actually stored in the memory. It is useful when you actually need the  list but if you only need to view the results, having an entire list in the memory is very  inefficient
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*CONVERTING IT INTO A GENERATOR
+
+
+def cube(n):
+    for item in range(n):
+        yield item**3
+
+
+
+for item in cube(10):
+    print(item)
+
+
+
+OUTPUT
+
+0
+1
+8
+27
+64
+125
+216
+343
+512
+729
+
+
+
+
+
+-The result is same but now `cube()` is very memory efficient. It is generating the values  as you need them.
+
+-When you call `cube()` by itself, you no longer see that list. You need to iterate through  the genrator object to actually get the numbers.
+
+-If you want the actual list, you can just cast it as well
+
+
+
+
+
+
+cube(10)
+
+OUTPUT:- <generator object cube at 0x0000019D4FF91AC0>
+
+
+
+list(cube(10))
+
+OUTPUT:- [0, 1, 8, 27, 64, 125, 216, 343, 512, 729]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*FIBINACCI SEQUENCE GENERATOR
+
+
+def fibo(n):
+    a=1
+    b=1
+    
+    for item in range(n):
+        yield a
+        a,b = b,a+b
+    
+
+
+
+
+for item in fibo(10):
+    print(item)
+
+
+
+
+OUTPUT
+
+
+
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*NEXT() FUNCTION 
+
+
+
+
+def simple_gen():
+    for item in range(3):
+        yield item
+
+
+
+
+for x in simple_gen():
+    print(x)
+
+
+
+g = simple_gen()
+
+
+
+g
+
+
+OUTPUT:- <generator object simple_gen at 0x0000019D4FF86F20>
+
+
+
+
+
+next(g)
+
+OUTPUT:- 0
+
+
+next(g)
+
+OUTPUT:- 1
+
+
+next(g)
+
+OUTPUT:- 2
+
+
+next(g)
+
+OUTPUT:-StopIteration                             Traceback (most recent call last)
+	<ipython-input-29-e734f8aca5ac> in <module>
+	----> 1 next(g)
+
+	StopIteration: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+-This is what the generator object is doing internally when you call the yield keyword. Its  remembering the previous value and then returns the next value depending on what formula it  is following 
+
+-After yielding all the values, next() calls the StopIteration error to inform us all the  values that have been yielded 
+
+-A for loop (when iterating through a generator) automatically catches this error and stops   calling next 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*ITER FUNCTION
+
+
+ -iter() function allows you to automatically iterate through a normal obeject that you may    not expect
+
+ -Allows you to convert objects that are iterable into iterators 
+
+
+
+
+
+
+
+
+
+s="hello"
+
+
+for letter in s:
+    print(letter)
+
+
+
+OUTPUT:- h
+         e
+	 l
+	 l
+	 o
+
+
+
+
+
+next(s)
+
+
+
+OUTPUT
+
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-33-61c30b5fe1d5> in <module>
+----> 1 next(s)
+
+TypeError: 'str' object is not an iterator
+
+
+
+
+
+
+
+
+
+
+
+-String objects do support iteration but we cannot directly iterate over it like we did   with a generator using the `next()`function. In order to turn the string into a generator  that we can iterate over, we will do this :-
+
+
+
+s_iter = iter(s)
+
+
+next(s_iter)
+
+OUTPUT:- h
+
+
+next(s_iter)
+
+OUTPUT:- e
+
+
+next(s_iter)
+
+OUTPUT:- l
+
+
+next(s_iter)
+
+OUTPUT:- l

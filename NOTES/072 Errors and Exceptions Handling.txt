@@ -1,0 +1,319 @@
+072 ERRORS AND EXCEPTIONS HANDLING 
+
+
+*We can use Error Handling to attempt to plan for possible errors 
+
+*Currently if there is any type of error in your code, the entire script will stop
+
+*We can use Error handling to let the script continue with other code, even if there is an  error 
+
+
+
+
+
+*We use three keywords for this:
+
+ -try: This is the block of code to be attempted (may lead to an error)
+ 
+ -except: The block of code which will execute in case there is an error in try block
+
+ -finally: A final block of code to be executed, regardless of an error
+
+
+
+
+
+try:
+    # WANT TO ATTEMPT THIS CODE
+    # MAY HAVE AN ERROR
+    result= 10+10
+    
+    
+except:
+    # EXECUTED WHEN THERE IS AN ERROR IN
+    # THE TRY BLOCK
+    print("Hey it looks like you aren't adding correctly!!")
+    
+
+result
+
+
+
+
+
+OUTPUT:- 20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+try:
+    # WANT TO ATTEMPT THIS CODE
+    # MAY HAVE AN ERROR
+    result= 10+ "10"
+    
+    
+except:
+    # EXECUTED WHEN THERE IS AN ERROR IN
+    # THE TRY BLOCK
+    print("Hey it looks like you aren't adding correctly!!")
+
+else:
+    #IF THERE IS NO ERROR IN THE TRY BLOCK
+    print("Add Went well")
+    print(result)
+
+
+
+
+
+
+OUTPUT:- Hey it looks like you aren't adding correctly!
+
+
+
+
+
+*As you can see the rest of the code was able to run with the except statement even though  we encountered an error.  Our program does not shut down entirely when an error is  encountered. 
+
+*Now if you just put a colon after except, the except block will be run for any error  encountered. However, there are many types of errors which you can specifically accept for
+
+*You can have a number of `except` statements covering different errors 
+
+
+
+
+
+
+
+
+
+
+
+try:
+    f= open("testfile","w")
+    f.write("Write a test line")
+    
+except TypeError:
+    #WILL BE RUN ONLY IF THERE IS A TYPE ERROR
+    #IN THE TRY BLOCK
+    print("There was a type error")
+    
+except OSError:
+    #WILL BE RUN ONLY IF THERE IS A 
+    #OS ERROR
+    print("Hey you have an OS error")
+    
+finally:
+    #ALWAYS EXECUTED NO MATTER WHAT
+    print("I always run")
+
+
+
+
+OUTPUT:- I always run 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+try:
+    f= open("testfile","r")
+    f.write("Write a test line")
+    
+except TypeError:
+    #WILL BE RUN ONLY IF THERE IS A TYPE ERROR
+    #IN THE TRY BLOCK
+    print("There was a type error")
+    
+except OSError:
+    #WILL BE RUN ONLY IF THERE IS A 
+    #OS ERROR
+    print("Hey you have an OS error")
+    
+finally:
+    #ALWAYS EXECUTED NO MATTER WHAT
+    print("I always run")
+
+
+
+
+
+OUTPUT:- Hey you have an OS error
+         I always run
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+try:
+    f= open("testfile","r")
+    f.write("Write a test line")
+    
+except TypeError:
+    #WILL BE RUN ONLY IF THERE IS A TYPE ERROR
+    #IN THE TRY BLOCK
+    print("There was a type error")
+    
+except:
+    #WILL BE RUN FOR ALL OTHER 
+    #EXCEPTIONS
+    print("All other exceptions")
+    
+finally:
+    #ALWAYS EXECUTED NO MATTER WHAT
+    print("I always run")
+
+
+
+
+
+
+
+
+OUTPUT:- All other exceptions
+         I always run
+
+
+*Since there is no TypeError,  the second `except` block is executed followed by the  `finally` block 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def ask_for_int():
+    try:
+        result=int(input("Please Provide a Number: "))
+        
+    except:
+        print("Whoops! that is not an integer")
+        
+    finally:
+        print("End of try/except/finally")
+
+
+ask_for_int()
+
+
+OUTPUT:- Please Provide a Number: 20
+         End of try/except/finally
+
+
+
+
+
+*When we provide a valid number we only get the result of the `finally` block because we are  successfully able to cast 20 into an integer 
+
+
+
+
+
+
+
+
+
+
+
+ask_for_int()
+
+
+OUTPUT:- Please Provide a Number: Word
+         Whoops! that is not an integer
+         End of try/except/finally
+
+
+
+
+*An error is produced because we can't cast a string to an integer and that is why the  `except` block is executed followed by the `finally` block 
+
+
+
+
+
+
+
+
+
+
+
+
+
+*We are going to adjust the code such that instead of just ending after you input something  wrong, we are going to put it in a while loop that keeps going over and over again until  you have a block of code with no exceptions 
+
+
+
+def ask_for_int():
+    
+    while True:
+        try:
+            result=int(input("Please Provide a Number: "))
+        
+        except:
+            print("Whoops! that is not an integer")
+            continue
+        else:
+            print("Yes thank you")
+            break
+    
+    
+        finally:
+            print("End of try/except/finally")
+            print("I will always run in the end")
+
