@@ -1,0 +1,295 @@
+021 LISTS IN PYTHON
+
+*Lists are ordered seuqences and can hold a variety of data types
+
+*They use [] brackets and commas to seprate objects in the list
+
+mylist=["one","two","three"]
+
+
+
+
+
+*Lists support indexing and slicing like strings
+
+
+  mylist[0]- Will give 'one' as output
+  mylist[1:]- Will give ['two',three'] as output
+
+	
+
+
+
+
+
+*Len can be used to get the number of element in the list
+
+ len(mylist)- Will give 3 as output
+
+
+
+
+
+*Lists can also be concatented
+
+ newlist= mylist+anotherlist
+
+
+
+
+
+
+
+
+*Lists can BE MUTATED UNLIKE STRINGS
+
+
+ newlist[0]="ONE"
+
+
+
+
+*Lists support negative indexing
+
+
+
+
+
+
+
+
+
+
+
+
+
+*NOTE: Unlike string methods, most list methods modify the original list rather than returning a new one 
+
+
+
+ADDING AN ELEMENT TO THE END OF THE LIST
+*Type "newlist." and hit tab
+*You will see all the methods that are available to you
+*Here, we will use the append method
+
+ newlist.append("six")
+
+
+
+
+
+
+
+INSERTING A VALUE AT A SPECIFIC INDEX
+*We will use the insert method
+
+ newlist.insert(3,"banana")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+REMOVING AN ITEM FROM THE LIST
+*We will use the pop method
+
+ newlist.pop()
+
+*By default, the position is negative one (reverse indexing). The very end of the list
+
+*To delete a specific item from the list supply the index variable to the pop funciton
+
+ newlist.pop(3)
+
+
+
+
+
+
+REMOVING A SPECIFIC VALUE FROM THE LIST
+*We will use the remove method
+
+ newlist.remove("banana")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATING A COPY OF THE LIST
+
+*NOTE: You cannot create a copy of a list by simply creating a new variable using the assignment operator (=). The new variable will point to the same list, and any modifications performed using one variable will affect the other 
+
+
+*So you will have to use the copy method
+
+
+
+ newlist=oldlist.copy()
+
+
+
+
+*Modifying the copied list does not affect the original list 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SORTING AND REVERSING METHODS IN LIST
+
+ newlist.sort()				//By default sorts in ascending 
+ newlist.reverse()
+
+*NOTE- These functions do not return any Value. Changes take place in the list itself
+
+
+
+
+
+
+SORT()
+
+*By default sort does not take any parameters. However it has two optional parameters:-
+
+
+
+ newlist.sort(key=.... , reverse=...)
+
+
+
+
+ reverse: If True, the sorted list is reversed (or sorted in Descending order)
+ key: Function that serves as a key for the sort comparision 
+
+
+
+
+
+*For sorting in descending order
+
+ 
+ newlist.sort(reverse=True)
+
+
+
+
+
+
+
+
+
+
+*If you want your own implementation for sorting, the sort() method also accepts a key function as an optional parameter
+
+Based on the results of the key function, you can sort the given list 
+
+
+
+
+
+
+EXAMPLE
+
+
+ newlist.sort(key=len)
+
+
+Here, len is the Python's built-in function to count the length of an element. The list is sorted based on the length of each element from lowest count to highest 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SORTED()
+
+*The simplest differnce between sort() and sorted() is that sort() changes the list directly and does not return any value, while sorted() does not change the list and returns the sorted list
+
+
+
+ 
+ sorted(list,key=..,reverse=...)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

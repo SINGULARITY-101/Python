@@ -1,0 +1,80 @@
+035 FOR LOOPS IN PYTHON 
+
+
+
+
+
+
+*SYANTAX FOR LOOP
+
+
+my_iterable=[1,2,3]
+
+for item_name in my_iterable:
+ print(item_name)
+
+
+*item_name is the variable that represents the objects inside the iterable (in this case a list) 
+
+
+*you can put for loops on strings, lists, dictionaries, tuple
+
+
+
+*For strings you can either declare strings or do like this
+
+ for letter in "abcde":
+  print("Its a letter")
+
+
+
+
+
+*tuple supports tuple enpacking which can be used for a variety of programs (we duplicate the strcuture of the items in the iterable and then unpack them to get access to the individual elements of the tuple)
+
+
+*Tuple enpacking is useful because many of the functions return information in the form of a list of tuples 
+
+
+
+
+
+
+
+
+
+*When you iterate through a dictionary, you only iterate throught the keys. To iterate through the items-
+ 
+  for item in d.items():
+        print(item)                             
+
+
+
+
+
+         OR
+
+
+   for (key,value) in d.items():
+       print(key)       //print(value)
+
+
+
+
+         OR
+
+
+
+
+
+   for item in d.values():
+      print(item)
+
+
+
+*Remember dictionaries are unordered
+
+
+
+
+

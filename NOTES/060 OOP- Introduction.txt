@@ -1,0 +1,54 @@
+060 OBJECT ORIENTED PROGRAMMING INTRODUCTION
+
+
+*A function attached to an object is called a METHOD
+*Non-function things attached to an object are called ATTRIBUTES
+
+
+
+*Object oriented programming allows programmers to create their own objects that have methods and attributes
+
+
+*Recall that after defining a string, list, dictionary or other objects, you were able to call methods off of them with the .method_name() syntax
+
+
+*These methods act as functions that use information about the object, as well as the object itself to return results , or change the current object
+
+
+*OOP allows users to create their own objects and create code that is more repeatable and organised
+
+
+
+
+SYNTAX
+
+
+
+class NameOfClass():				//camel cased
+
+	def__init__(self,param1,param2):	//looks like a function but it is called a 
+		self.param1=param1	        //method when inside an object/class
+		self.param2=param2
+
+	def some_method(self):
+		#perform some action
+		print(self.param1)
+
+
+
+
+
+
+
+*__init__ : it is a special method that allows you to create an instance of the actual 	                 object
+
+*param1,param2: these are the parameters python expects you to pass when you create an                       instance of the actual object
+
+*self: we use this keyword to connect methods/parameters to the class
+
+
+
+
+
+
+

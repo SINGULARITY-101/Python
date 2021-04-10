@@ -1,0 +1,288 @@
+028 IO WITH BASIC FILES IN PYHTON
+
+*If you want to know what a function does you can use shift + tab right next to the function to get information about the functions
+
+
+*The file you are working on should be in the same folder as all the notebooks
+
+
+*If you want to create a file using the jupyter notebook's magic functionality 
+
+
+%%writefile myfile.txt
+Hello this is a text file
+this is the second line
+this is the third line
+
+
+
+
+OPENING A TEXT FILE
+
+myfile=open("myfile.txt")
+
+OR
+
+with open("myfile.txt") as my_new_file:
+ contents=my_new_file.read()			//With this command you wont have 					                          to close the file mannualy 						                          using the close() command 
+					
+						  You can also provide various modes using 					                  the mode argument
+
+
+
+*Make sure you write the name of the text file correctly and the text file is saved in the same directory as your jupiter notebook is working on
+
+
+*To see the current working directory, type "pwd" and save the text file in that directory
+
+
+
+
+
+
+METHODS FOR READING
+
+
+*myfile.read()    Returns a giant string of everything that is in the text file. 		                  So new lines are represented by \n
+	 	
+		  However once you re-execute this command, you will just get " " 		                  because now the file pointer is at the end of the file and it   		                  will have to be seeked to the beginning to the file
+
+
+
+*myfile.seek(0)       Returns the file pointer to the beginning of the file
+
+
+*myfile.readlines()   If you don't want the output to be just a giant string you can 		                      use this command which will return a list with each line in the file    		      being an element in the list
+
+
+*myfile.close()	      Closes the file 
+
+
+  
+
+
+
+
+FILE LOCATIONS
+
+*Now to open a text file at any location you can provide the full path inside the open command  
+
+*Make sure to put double backslashes instead of just single backslashes so that one backslash acts as an escape sequence
+
+
+  myfile=open("D:\\1_Mine\\Coding\\Python\\NOTES\\Booleans.txt")
+
+
+*Don't forget the .txt extension otherwise you will get an error 
+
+
+
+
+
+
+FILE MODES
+
+with open("myfile.txt",mode="r") as myfile:
+ contents=myfile.read()
+
+OR
+
+with open("myfile.txt",mode="a") as myfile:
+ myfile.write("APPENDING")
+
+OR
+
+with open("adsasd.txt",mode="w") as f:
+ f.write("I CREATED THIS FILE")
+
+
+*mode="r"            read only
+
+*mode="w"	     write only (will overwrite files or create new if file doesnt exist)
+
+*mode="a"            append only (will add on to files)
+
+*mode="r+"           reading and writing
+
+*mode="w+"           writing and reading (Overwrites existing files or creates a new file if                                          file doesn't exist)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INTERACTING WITH OS 
+
+*The OS module in Python provides many fucntions for interacting with the OS and the filesystem. Importing os :-
+
+
+    import os
+
+
+
+*We can check the current working directory using:-
+
+
+    os.getcwd()
+
+
+
+*We can list the files in a directory using:-
+
+
+   os.listdir()
+
+
+
+*Listing the files using absolute and relative path 
+
+ 
+ -Absolute Path 
+
+    os.listdir("D:\\1_Mine\\Coding\\Python\\CODES\\Jovian\\Practice\\data")
+
+
+
+ -Relative Path 
+
+    os.lisdir("./data")
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+*We can make a directory using:-
+
+
+  os.mkdir()
+
+    -Can create a single sub-drectory and will throw an exception if the intermediate             directories that do not exist are specified 
+
+
+  os.makedirs()
+
+     -Creates all the intermediate directories if they don't exist. Raises an exception if         the leaf already exists or cannot be created 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*CSV FILES
+
+
+-A delimited text file is used to store data in which each line is a data record and has  fields seprated by the delimiter 
+
+
+-Comma seprated values (CSV) file is a delimited text file that uses a comma to seprate  values. Each line of the file is a data record. Each record consists of one or more fields,  seprated by commas. A CSV file typically stores tabular data.
+
+
+-The first line of the file is the header, which indicates what each of the numbers on the remaining lines represent 
+
+
+
+
+
+
+*PARSING
+
+-It is the process of turning some kind of data into another kind of data 
+
+-In practice, this is almost always turning a string or binary data, into a data structure inside a program 
+
+
+
+
+
+
+
+
+
+
+
+-Code for reading CSV files (For more explanation view the Jovian Notebook)
+
+
+
+
+def parse_headers(header_line):
+    return header_line.strip().split(',')
+
+def parse_values(data_line):
+    values = []
+    for item in data_line.strip().split(','):
+        if item == '':
+            values.append(0.0)
+        else:
+            values.append(float(item))
+    return values
+
+def create_item_dict(values, headers):
+    result = {}
+    for value, header in zip(values, headers):
+        result[header] = value
+    return result
+
+def read_csv(path):
+    result = []
+    # Open the file in read mode
+    with open(path, 'r') as f:
+        # Get a list of lines
+        lines = f.readlines()
+        # Parse the header
+        headers = parse_headers(lines[0])
+        # Loop over the remaining lines
+        for data_line in lines[1:]:
+            # Parse the values
+            values = parse_values(data_line)
+            # Create a dictionary using values & headers
+            item_dict = create_item_dict(values, headers)
+            # Add the dictionary to the result
+            result.append(item_dict)
+    return result
+
+

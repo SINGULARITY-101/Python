@@ -1,0 +1,308 @@
+051 NESTED STATEMENTS AND SCOPE
+
+
+
+*When we create a variable name in python that name is stored in name space
+
+*Variable names also have a scope that determines their visibility to other parts of code
+
+*Scope allows python to have a set of rules and determine which variable we are referencing in our code
+
+
+
+
+*These rules are a LEGB rule format
+
+
+*LEGB stands for "Local - Enclosing function locals - global -built in"
+
+
+
+
+
+*L:Local- Names assigned in any way within a function (def or lambda) and not declared                 global in that function
+
+
+ E:Enclosing Function Locals- Names in the local scope of any and all enclosing functions 	                              (def or lambda), from inner to outer 
+
+ 
+ G:Global(module)- Names assigned at the top-level of a module file or declared global in a 		           def within the file
+
+ 
+ B:Built in(Python)- Names preassigned in the built-in names module: 		                                  open,range,SyntaxError... 
+
+
+
+
+
+*This is essentially the order in which Python will look for variables
+
+
+
+
+
+
+
+
+
+
+*EXAMPLE
+
+
+
+
+
+name= "THIS IS A GLOBAL STRING"
+
+
+def greet():
+    
+  
+    
+    name="Sammy"
+    
+    def hello():
+        print("Hello "+name)
+        
+    hello()
+    
+
+
+greet()
+
+
+
+
+OUTPUT: Hello Sammy
+
+
+
+
+
+
+
+*What actually is happening there?
+ Ans- When we call the function greet(), the name is assigned to "SAMMY"
+      then the hello() function is defined and after that it is called.
+      The function first looks in the local scope that is within the 
+      hello() function itself and checks whether name is assigned any 
+      value. As you can see it is not assigned any value so Python
+      goes to the next level which is "Enclosing function locals" 
+      (greet() encloses hello()). So it looks in the greet() function
+      and we can see that name has been assigned a value="sammy" and
+      that is why when we call greet() we get output as "Hello Sammy".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*EXAMPLE WITH LABELLINGS
+
+
+
+
+#GLOBAL
+name= "THIS IS A GLOBAL STRING"
+
+
+def greet():
+    
+    #ENCLOSING FUNCTION LOCAL
+    name="Sammy"
+    
+    def hello():
+        #LOCAL
+        name="I AM A LOCAL"
+        print("Hello "+name)
+        
+    hello()
+    
+
+
+
+
+
+
+
+
+
+
+*The only level above global is the built-in function level. If you are not sure if a name is a built-in function, you can call help on it and if something comes out it means its built-in
+
+
+
+
+
+
+
+*GLOBAL KEYWORD
+
+
+-Consider this example:-
+
+
+
+
+
+
+x=50
+
+def func(x):
+    print(f"x is {x}")
+    
+    #LOCAL REASSIGNMENT
+    
+    x=200
+    print(f"I just locally changed x to {x}")
+
+
+
+
+
+func(x)                                             print(x)
+
+
+OUTPUT:- x is 50
+I just locally changed x to 200			    50	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-If you notice when you printed the variable x by using print(x) the value is still 50 even though you changed it to 200 inside the function func(x)
+
+The reason for this is because this reassignment is only happening in the local name space inside the function, it is not going to effect anything at a higher scope
+
+This is what scope really is. So when you declare variables inside of a function definition, those variables only have a scope local to this function
+
+
+
+
+
+
+-So if you want to actually make changes to the global variable, you can use the global keyword as follows:-
+
+
+
+
+
+
+x=50
+
+def func():
+    global x
+    
+    print(f"x is {x}")
+    
+    #LOCAL REASSIGNMENT ON A GLOBAL VARIABLE
+    
+    x="NEW VALUE"
+    print(f"I just locally changed global x to {x}")
+
+
+
+
+
+
+print(x)			
+
+
+OUTPUT:-50 
+
+
+
+
+func()
+
+OUTPUT:- x is 50
+         I just locally changed global x to NEW VALUE
+
+
+
+
+
+print(x)
+
+OUTPUT:- NEW VALUE
+
+
+
+
+
+
+
+
+
+
+-The global keyword tells python to jump to the global level and grab the x variable from there and then whatever happens to x inside the function will effect the global x
+
+
+-Now because of the power of the global keyword, its use should be avoided unless its absolutely necessary. However, if you still need to work on the global variable you should do it like this:-
+
+
+
+
+
+
+
+x=50
+
+def func(x):
+    
+    x="NEW VALUE"
+    return x
+
+
+
+
+
+print(x)
+
+OUTPUT:-50
+
+
+
+x=func(x)
+
+
+
+
+print(x)
+
+OUTPUT:- NEW VALUE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

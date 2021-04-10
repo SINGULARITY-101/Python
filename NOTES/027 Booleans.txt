@@ -1,0 +1,37 @@
+027 BOOLEANS IN PYTHON
+
+*Allows you to convey true or false statements
+
+*Make sure to capitalise T and F in True and False
+
+*You can use the none keyword for an object that we dont want to assign yet but might wanna assign it later in the program
+
+b=none    //Now python won't show error when I call b
+
+
+
+
+*All numbers are treated as true apart from 0
+
+bool(73)         True
+bool(0)          False
+
+
+
+*All strings are treated as true except the empty string
+
+bool("vk")       True
+bool("")         False
+
+
+
+
+*Boolean-to-integer coversion
+
+int(True)        1
+int(False)       0
+
+
+
+*Remember that True evaluates to 1 and False evaluates to 0 when booleans are used n arithmetic operations 
+

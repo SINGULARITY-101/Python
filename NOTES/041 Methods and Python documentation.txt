@@ -1,0 +1,29 @@
+041   METHODS AND THE PYTHON DOCUMENTATION
+
+
+*Built-in objects in python have a variety of methods that you can use
+
+EXAMPLE
+-mylist.append(2)
+-mylist.pop()
+
+*To get list of methods available for various python objects, there are plenty of ways:
+ 
+ -write "mylist." and hit tab to get a list of methods
+
+
+*If you want to know what a particular method does you can either write that function and hit shift+tab (jupyter notebook only) or call the help function:
+
+ help(mylist.insert)
+
+
+
+
+*The name "insert" only exists within lists, it does not exist as a standalone name like built in functions such as max or len
+
+*So if we would have called help(insert), python would have complained that no variable named "insert" exists
+
+
+
+
+*Other way you can get a guide on what the methods do is by reading python documentation

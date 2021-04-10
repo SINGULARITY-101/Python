@@ -1,0 +1,290 @@
+050 LAMBDA EXPRESSIONS MAP AND FILTER FUNCITONS
+
+
+
+*Lambda expressions are a quick way to create what we call as anonymous functions which we use only one time and never reference again. We don't even name them. But before that we need to learn about map and filter
+
+
+
+
+
+
+
+*MAP FUNCITON
+
+-SYNTAX:
+
+map(function,iterable)
+
+
+
+-Suppose we have an iterable and we want to apply a function to each and every element of the iterable
+
+-We can use a for loop but thats a lot of code so its better to use map funciton
+
+-A map funciton basically applies the funciton you pass to each element of the iterable you pass
+
+
+-When you just run the map function like itself, it will return just a memory location. So you can get the items of the map either by using a for loop or by typecasting it to a list
+
+
+
+
+
+
+EXAMPLE
+
+
+
+def square(num):
+    return num**2
+
+my_nums=[1,2,3,4,5]
+
+for item in map(square,my_nums):    OR      list(map(square,my_nums))
+    print(item)
+
+
+OUTPUT- 1				    [1, 4, 9, 16, 25]
+	4
+	9	
+	16
+	25
+
+
+
+
+
+
+
+
+
+-The functions can be a lot more complex like:
+
+
+
+
+
+
+
+
+EXAMPLE
+
+
+
+
+
+def splicer(mystring):
+    if len(mystring)%2==0:
+        return "EVEN"
+    else:
+        return mystring[0]
+
+
+
+names=["Andy","eve","Sally"]
+
+
+
+list(map(splicer,names))
+
+
+
+
+
+
+OUTPUT- ['EVEN', 'e', 'S']
+
+
+
+
+
+
+
+
+
+-Notice how in the map syntax, we don't put () opening closing parenthesis after the function name because we are not calling the functions to be executed inside the map. Map is going to later on execute the function
+
+So a function is passed as an argument inside the map
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*FILTER FUNCTION
+
+
+
+-Filter function has a syntax very similar to map:
+
+
+
+filter(function,iterable)
+
+
+
+-Also, Filter when just run by itself will only return a memory location. So you will have to use a for loop or cast it into a list
+
+
+
+
+-HOWEVER, THE FUNCTION SHOULD ALWAYS RETURN A BOOLEAN VALUE (TRUE OR FALSE)
+
+-What filter does, is grab the objects inside the iterable that pass some sort of condition based on a function previously defined
+
+-Or we can say filter grabs those elements inside the iterable for which the function returns a boolean value of True
+
+
+
+
+
+
+EXAMPLE:
+
+
+
+def check_even(num):
+    return num%2==0
+
+
+mylist=[1,2,3,4,5,6]
+
+
+
+list(filter(check_even,mylist))   OR     for item in filter(check_even,mylist):
+						  print(item)
+								
+
+
+
+OUTPUT- [2, 4, 6]                          2
+					   4
+					   6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*LAMBDA EXPRESSIONS
+
+-Lambda expressions are also known as anonymous functions whose fucntionality is used only once and that is why we DON'T even give it a name NOR do we use the def keyword 
+
+
+
+
+-Example Function:
+
+
+def square(num):
+    return num**2
+
+
+
+This can be written as a lambda expression as follows:-
+
+
+
+lambda num:num**2
+
+
+
+-Notice how def keyword, function name, parenthesis and return keyword are removed
+
+-The return keyword is removed because it is assumed that we will return whatever's on the other side of the colon
+
+
+
+
+
+
+-Lambda expressions are typically not named but you can assign a name to them like this-
+
+
+square=lambda num:num**2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*LAMBDA EXPRESSION WITH MAP AND FILTER
+
+-If you notice earlier we had to actually define a funtion and use up space to use map or filter. However,if we intend to use it one time, we can save space by using lamda expressions
+
+
+
+
+-With map:-
+
+
+newlist=[1,2,3,4,5,6]
+
+list(map(lambda num:num**2,newlist))
+
+
+
+OUTPUT:- [1, 4, 9, 16, 25, 36]
+
+
+
+
+
+-With Filter :-
+
+
+list(filter(lamda num:num%2==0,newlist))
+
+
+
+
+OUTPUT:- [2, 4, 6]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

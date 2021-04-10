@@ -1,0 +1,165 @@
+061 OOP-ATTRIBUTES AND CLASS KEYWORD
+
+
+
+*Classes=Objects
+
+
+*Class names should use camel case
+
+
+
+
+
+
+
+
+SYNTAX
+
+
+
+
+class Dog():
+	
+	def __init__(self,breed):
+		self.breed=breed		#All 3 can breeds can take different names
+						#but it is suggested to keep the names same
+
+
+
+
+
+
+
+
+my_dog=Dog(breed="lab")
+
+
+
+type(my_dog)				OUTPUT:- __main__.Dog
+
+mydog.breed				OUTPUT:- lab
+
+
+
+
+
+
+
+
+
+*UNDESTANDING WHATS HAPPENING
+
+-Attributes are the charaterisics of a class
+-Parameters get assigned to the attributes
+
+
+-__init__ can be thought of as the constructor of the class and its going to be called automaically when you create an instance of the class
+
+
+
+-The self keyword represents the instance of the class itself, most OOP languages pass it as an hidden paramter but Python does not do that and we need to declare it explicitly. We could have written any name we wanted but by convention it is recommended to use self
+
+-So, when you creare an instance of the Dog() class what python will do is call the init method and it is going to use self to represent the instance of the class itself and then its going to expect the user to pass the argument breed
+
+
+
+-So what is happening is basically the user passes the argument or parameter and then it gets assgined to the attribute which you can later call on your class instance 
+
+
+
+
+
+
+
+
+
+
+
+*Clearer version to undestand self
+
+
+
+
+
+class Dog():
+
+	def __init__(self,mybreed):
+
+       		  #Attributes
+       		  #We take in the parameter
+      		  #Assign it using self.attribute_name
+
+		  self.my_attribute=mybreed		#Attribute assigned the value of 							        parameter
+
+
+
+
+
+
+my_dog=Dog(breed="Huskie")
+
+
+type(my_dog)                          OUTPUT:-  __main__.Dog
+
+my_dog.myattribute                    OUTPUT:-  Huskie 		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+*Adding more attributes to the class
+
+
+class Dog():
+
+	def __init__(self,breed,name,spots):
+
+		self.breed=breed
+		self.name=name
+
+		#Expected a boolean Value
+
+		self.spots=spots
+
+
+
+
+
+
+my_dog=Dog(breed="lab",name="sammy",spots="False")
+
+
+type(my_dog)				OUTPUT:- __main__.Dog
+
+my_dog.breed				OUTPUT:- lab
+
+my_dog.name				OUTPUT:- sammy
+
+my_dog.spots				OUTPUT:- False
+
+
+
+
+
+
+*Since Python is so flexible, later on when you are expecting other people to use your classes its essential that you add some documentation so that they know what kind of parameters is your class expecting
+
+
+
+
+
+
+
+
+
+

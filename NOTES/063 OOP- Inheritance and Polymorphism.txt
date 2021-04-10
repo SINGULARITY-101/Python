@@ -1,0 +1,403 @@
+063 OOP- INHERITANCE AND POLYMORPHISM
+
+
+
+*INHERITANCE
+
+-It is a way to form new classes from existing classes
+-Allows us to reuse code that you have already worked on
+-Reduces the complexity of the program
+
+
+EXAMPLE
+
+
+
+
+
+#BASE CLASS
+
+
+class Animal():
+    def __init__(self):
+        print("Animal created")
+        
+    def who_am_i(self):
+        print("I am an animal")
+        
+    def eat(self):
+        print("I am eating")
+
+
+
+
+
+
+#DERIVED CLASS
+
+
+class Dog(Animal):
+    
+    def __init__(self):
+        Animal.__init__(self)
+        print("Dog created")
+        
+        
+    def who_am_i(self):
+        print("I am a dog")
+        
+        
+    def eat(self):
+        print("I am a dog and eating")
+        
+    
+    def bark(self):
+        print("Woof")
+        
+        
+
+
+
+
+
+
+
+
+POINTS TO NOTE:-
+
+
+-Newly formed classes can use the base class to inherit some of its methods that you may want to use again
+
+
+
+-By putting "Animal" in class Dog(Animal), the "Dog" class inherits from the "Animal"(base)class and is knows as the derived class
+
+
+
+-Now in the __init__ of "Dog" we called the __init__ of "Animal" class as well. So when we create an instance of the "Dog" class, an instance of the "Animal" class is created as well and we are able to do that because the "Dog" class is inheriting from the "Animal" class
+
+
+
+-If you want to override one of the older methods in the "Animal"(base) class, you can just redefine them in the "Dog" class as we did with the who_am_i() function
+
+
+
+-You can also add on methods like the bark() method we added to the "Dog" class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mydog=Dog()
+
+OUTPUT:-  Animal Created
+	  Dog Created
+
+
+
+
+POINTS TO NOTE:-
+
+-When I run this command, we also see "Animal Created" in the output, because when the init method of "Dog" class is called, the init method of "Animal" class is called as well which prints "Animal Created".
+
+-After the execution of the init method of the "Animal" class, the execution of rest of the init method of the "Dog" class continues and that is why "Dog created" is printed as well
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*POLYMORPHISM
+
+-Refers to the way different object classes can share the same method name and those methods can be called from the same place even though a variety of different objects might be passed in
+
+
+
+
+
+EXAMPLE
+-Here, we have a dog class and a cat class. Each of them has a speak() method. When called, each object's speak method returns a result unique to the object i.e. it is unique for a dog to say woof and for a cat to say meow
+
+NOTE- The names are going to be unique to that particular instance of the class
+
+
+
+
+class Dog():
+    
+    def __init__(self,name):
+        self.name=name
+        
+    def speak(self):
+        return self.name + " says Woof!"
+
+
+
+
+
+
+class Cat():
+    
+    def __init__(self,name):
+        self.name=name
+        
+    def speak(self):
+        return self.name + " says meow!"
+
+
+
+
+
+niko= Dog("Niko")
+felix= Cat("Felix")
+
+
+
+
+
+
+niko.speak()						felix.speak()
+
+
+OUTPUT:- Niko says woof				        Felix says meow
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-WAYS TO REPRESENT POLYMORPHISM
+
+
+1. for item in [niko,felix]:
+    print(type(item))
+    print(item.speak())
+
+
+
+OUTPUT:- <class '__main__.Dog'>
+	 Niko says Woof!
+	 <class '__main__.Cat'>
+	 Felix says meow!
+
+
+
+
+EXAPLANTION:- Both niko and felix share the same method name called speak(). However they 	      belong to different types (one belongs to Dog() class and one belongs to Cat() 	      class) and they also print differnt stuff
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. def pet_speak(pet):
+    
+    print(pet.speak())
+
+
+
+
+   		pet_speak(niko)				pet_speak(felix)
+
+OUTPUT:-        Niko says woof				Felix says meow!
+		
+
+
+
+
+
+
+
+
+EXPLANATION:- pet_speak itself does not know whether the object we will pass will be a of a 	              Dog() class or a Cat() class but we happen to use a method that is common to 	              both the classes and we get different object specific results
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*ABSTRACT CLASSEs
+-It is a class whose instance is never expected to be created. Instead its designed to only serve as the base class
+
+
+-For example, the animal class below is an abstract class and when we create an instance of this class  (WHICH WAS NOT EXPECCTED) and use its method as myanimal.speak(), an error is raised which tell us to use a subclass to implememt the abstract method
+
+
+-The speak() method inside the "Animal" class is an abstract method because it itself is not doing anything. Instead, its expecting you to inherit the "Animal" class an override the speak() method
+
+
+
+EXAMPLE
+
+
+class Animal():
+    
+    def __init__(self,name):
+        self.name=name
+        
+    def speak(self):
+        raise NotImplementedError("Subclass must implement this abstract method")
+        
+
+
+
+
+
+myanimal=Animal("Freed")
+
+myanimal.speak()
+
+
+
+
+
+
+
+
+OUTPUT:-
+
+---------------------------------------------------------------------------
+NotImplementedError                       Traceback (most recent call last)
+<ipython-input-18-188713a00ef6> in <module>
+----> 1 myanimal.speak()
+
+<ipython-input-16-2718552e0b97> in speak(self)
+      5 
+      6     def speak(self):
+----> 7         raise NotImplementedError("Subclass must implement this abstract method")
+      8 
+
+NotImplementedError: Subclass must implement this abstract method
+
+​
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-Here is what you are expected to do:
+
+
+
+
+class Dog(Animal):
+    def speak(self):
+        return self.name+" woof"
+
+
+
+
+class Cat(Animal):
+    def speak(self):
+        return self.name+" meow"
+
+
+
+fido=Dog("Fido")
+isis=Cat("Isis")
+
+
+
+
+
+
+
+
+
+		fido.speak()                          isis.speak()
+
+OUTPUT:	         Fido woof			       Isis meow	 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

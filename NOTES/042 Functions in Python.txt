@@ -1,0 +1,58 @@
+042 FUNCTIONS IN PYTHON
+
+*Functions allows us to create blocks of code that can be easily executed multiple times without needing to constantly rewrite the entire block of code
+
+
+SYNTAX
+
+def name_of_funtion():
+    """
+
+      Docstring explaings function
+
+
+    """
+
+    print("hello")
+
+
+
+
+OR
+
+
+
+
+def name_of_funtion(name):
+
+     print("Hello " +name)
+
+
+
+*Typically we use the return keyword to send back the result of the function instead of just printing it out
+
+*Return allows us to assign the output of a function to a new variable
+
+
+
+
+def add_funtion(num1,num2):
+
+  return num1+num2
+
+
+
+*Now if you use help with your custom defined funtion it wont show any description .Now to help with that we will use docstring (Documentation string)
+
+
+*Functions can be used to solve the pig latin problem( It is a way to transform a normal word into a secret keyword)
+
+RULES
+-If a word starts with a vowel, put ay at the end
+-If a word does not start with the vowel, put the first letter at the end and then add ay
+
+
+
+
+
+

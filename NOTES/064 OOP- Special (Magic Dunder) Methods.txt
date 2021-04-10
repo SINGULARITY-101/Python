@@ -1,0 +1,213 @@
+064 OOP- SPECIAL (MAGIC DUNDER) METHODS
+
+*Special methods allows us to use some built-in operations in Python (eg len , print()) with our own user created objects 
+
+
+
+
+*EXAMPLE
+
+-Here,you have created a list and called a len functon on it to get the length of the list
+
+-However, if you try to get the length of a user-defined object (in this case mysample), you  get an error
+
+-And if you use a print() function on mysample, it will just give you the location where  your object is located 
+
+
+
+
+
+
+mylist=[1,2,3]
+len(mylist)                            OUTPUT:- 3
+
+
+
+
+
+
+
+
+
+class Sample():
+    pass
+
+
+mysample=Sample()
+len(mysample)                     
+
+
+
+
+
+OUTPUT:-
+
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-6-97b353a42cb3> in <module>
+----> 1 len(mysample)
+
+TypeError: object of type 'Sample' has no len()
+
+
+
+
+
+
+
+
+
+
+print(mysample)
+
+
+
+OUTPUT:-
+
+
+<__main__.Sample object at 0x000001F9C6A05BE0>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-To use built-in functions like print(), len with our user-defined object, we use special  methods
+
+
+-They use double underscores
+
+
+-When you call a print function (print(b)), it askes what is the string representation of b.  So to use print() with our object, we use the special method __str__
+
+
+
+
+
+
+
+
+__str__ 
+
+
+-What it does is whenever there is a function that asks for the string  representation of  your "book" class, its going to return whatever the contents of  __str__ are 
+
+-So when the print(b) funciton is called, it asks the book object "Hey do you  have a string  representation of yourself?" to which the book object says "yes I do" because of the  special __str__ method 
+          
+
+
+
+
+__len__
+
+-It is a similar special method to use the len method. Here, you can put anything that you  want to print out when the len method is called on the object
+
+
+
+
+
+
+__del__
+
+-The del method is used to delete an object/variables from the memory:
+
+     del b
+ 
+-Sometimes you may want to return a message or want some other thing to occur when an object  is deleted and for that we use the spcial method __del__
+
+
+
+
+
+
+__init__
+
+-It is also a special method and is called automatically when you create an instance of the  object 
+
+
+
+
+
+IMPORTANT NOTE:- The __str__ and __len__ method MUST RETURN THERE RESPECECIVE DATA TYPES 
+                 (str for __str__ and int for __len__) if you simply use print it will show                   an error
+
+
+
+
+
+
+
+class Book():
+    
+    def __init__(self,title,author,pages):
+        
+        self.title=title
+        self.author=author
+        self.pages=pages
+        
+    def __str__(self):
+        return f"{self.title} by {self.author}"
+    
+    
+    def __len__(self):
+        return self.pages
+    
+    
+    def __del__(self):
+        print("A book object has been deleted")
+
+
+
+
+
+b=Book("Python Rocks","Jose",200)
+
+print(b)
+
+OUTPUT:- Python Rocks by Jose
+
+
+len(b)
+
+OUTPUT:- 200
+
+
+del b
+
+OUTPUT:- A book object has been deleted 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

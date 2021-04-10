@@ -1,0 +1,147 @@
+015 INTRODUCTION TO STRINGS
+
+
+*Strings are seuqence of characters. Can use single quotes or double quotes
+
+Example- 'hello', "hello", "I don't do that"
+
+*Strings are ORDERED SEQUENCES and because of which we can use indexing and slicing to grab sub-sections of the string
+
+
+
+
+*Indexing allows you to grab a single character from a string
+*Python also supports reverse indexing which can be used to grab the last letter of the string in case we dont know how long the actual string is
+
+Syntax- mystring[index_number]
+
+
+
+
+
+
+*Slicing allows you to grab a subsection of multiple characters
+
+Syntax- mystring[start:stop:step]
+
+NOTE- stop is the index you will go up to (but not include)
+
+
+Example
+mystring[2:]  - Starting from index 2 and going all the way to the end
+
+mystring[:3]  - Starting from start and going up to 3 (not including 3)
+
+mystring[3:6] - Starting from 3 and going up to 6
+
+mystring[::3] - Going from beginning to end with step size 3
+
+mystring[::-1]- For reversing a string
+
+
+
+
+
+
+
+*\n,\t are called escape sequences
+
+
+
+What you type 		What you get		Example			print(example)
+
+1. \'			'		      'What\'s up?'		 What's up?
+
+2. \"			"		      "That's \"cool\""		That's "cool"
+
+3. \\ 			\		    "Look, a mountain: /\\"	Look, a mountain: /\
+
+4. \n						"1\n2 3"		   1
+									   2 3
+
+
+
+*In addition, Python's triple quote syntax for strings lets us include newlines literally (i.e. by just hitting enter on our keyboard, rather than using the special "\n" sequence)
+We can use them anywhere we want to define a string
+
+
+
+
+
+
+triplequoted_hello= ""hello
+		      world"""
+
+print(triplequoted_hello)
+
+
+
+
+
+
+
+OUTPUT:- hello
+	 world
+
+
+
+
+
+
+
+
+
+
+
+*len function
+- Returns the length of the string
+- Includes spaces
+
+Syntax- len("I am")
+
+- Returns 4 including the space
+- Can also be used to get the length of lists 
+
+
+my_list=[1,2,3,4,5]
+len(my_list)
+
+OUTPUT- 5
+
+
+
+
+
+
+NOTE that special characters like `\n` and escaped characters like `\"` count as a single character, even though they are written and sometimes printed as 2 characters.
+
+
+
+
+
+
+
+
+
+
+
+*To print shit in the same line use the end argument:
+
+print("hello",end=" ")
+print("world",end=" ")
+
+
+
+OUTPUT:- hello world
+
+
+
+
+
+
+
+
+
+
+
+

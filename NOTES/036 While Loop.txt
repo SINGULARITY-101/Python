@@ -1,0 +1,21 @@
+036 WHILE LOOPS IN PYHTON
+
+
+
+*SYNTAX
+
+while some_boolean_condition:
+ #do_something
+
+else:
+ #do_something_different
+
+
+
+*break, continue and pass
+ -break: Breaks out of the current enclosing loop
+
+ -continue: Goes to the top of the closest enclosing loop    
+             //allows next iteration of the loop to take place
+
+ -pass: Does nothing at all

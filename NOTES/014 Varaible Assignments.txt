@@ -1,0 +1,36 @@
+014 VARIABLE ASSIGNMENTS	
+
+*Variable names follow usual rules
+
+
+
+*Python uses dynamic typing which means you can reassign variables to the different data types
+*This makes python very flexible in assigning data types, this is different than other languages that are statically typed
+
+EXAMPLE :
+
+my_dogs=2;
+
+my_dogs=["Sammy", "Frankie"]
+
+//Okay in Python
+
+
+*PROS of dynamic typing
+ -Not having to write the actual data type
+ -Makes the code readable
+
+*CONS of dynamic typing
+ -May result in bugs
+
+
+
+type()
+*Tells us the datatype of a variable
+
+type(a) 
+
+
+
+Kernal restart
+*Use this if you are getting weird errors. This will clear all the variables and you will have to run all the cells again

@@ -1,0 +1,151 @@
+044 ARGS AND KWARGS IN PYTHON
+
+*Stands for arguments and keyword arguments
+
+*An argument is a variable,value or object passed to a function or method as input 
+
+
+
+
+ARGS
+
+
+*Suppose there is a function
+
+
+
+	def myfunc(a,b):
+	  return sum((a,b))*0,05
+
+
+
+ -a,b are examples of positional arguments
+ 
+ -Positional arguments are arguments that need to be include in the proper position or order
+
+ -If we want to work with multiple postitional arguments,  we can assign a lot of       parameters to the function like this
+
+
+
+	def myfunc(a,b,c=0,d=0,e=0):
+	  return sum((a,b,c,d,e))*0,05
+
+
+
+ -But eventually you hit a limit. This is where *args comes in 
+
+ -*args allows a function to take an arbitrary number of arguments
+
+
+
+	def myfunc(*args):
+	  return sum(args)*0.05
+
+
+  -What this does it allows the function to take as many parameters as the user enters          and then treats them like a tuple inside the function
+
+
+  -It is not necessary that you have to use args word. It is an arbitrary choice. As          long as the * is there, you can use any word like *spam,*vk etc. But by                  convention use *args
+
+  -The word args essentially becomes a tuple
+
+
+  -Now since the parameters are treated like a tuple you can iterate through them
+
+
+	def myfunc(*args):
+    	  for item in args:
+            print(item)
+
+	myfunc(40,60,100,1,34)
+
+
+   O/P- 40
+        60 
+        100
+        1
+        34
+
+
+
+
+
+
+
+
+KWARGS
+
+
+*Similarly Python offers a way to handle an arbitrary number of keyworded arguments
+
+*An argument passed to a function or method which is preceeded by a keyword and an equals sign 
+
+
+
+
+*Instead of creating a tuple, a dictionary of key-value pairs is made and the word kwargs essentially becomes a dictionary 
+
+*The word kwargs essentially becomes a dictionary 
+
+
+  def myfunc(**kwargs):
+    print(kwargs)
+
+  myfunc(fruit="apple",veggie="lettuce")
+
+
+O/P- {'fruit': 'apple', 'veggie': 'lettuce'}
+
+
+
+*Again the word kwargs is an arbitrary choice
+
+
+
+
+
+
+
+
+ARGS KWARGS COMBINATION
+
+
+
+*Example
+
+
+def myfunc(*args,**kwargs):
+    
+    print(args)
+    print(kwargs)
+    
+    print(" I would like {} {}".format(args[0],kwargs["food"]))
+
+
+
+myfunc(10,20,30,fruit="orange",food="eggs",animal="dog")
+
+
+
+
+
+
+
+O/P- (10, 20, 30)
+     {'fruit': 'orange', 'food': 'eggs', 'animal': 'dog'}
+     I would like 10 eggs
+ 
+
+
+
+
+*Args is said first and then kwargs. Therefore when we pass in the arguments in the fucntion call the order should be maintained that is the tuple arguments should be passed first followed by the keyword arguments
+
+
+
+
+
+
+
+
+

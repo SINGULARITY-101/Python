@@ -1,0 +1,23 @@
+026 SETS IN PYTHON
+
+*Sets are unordered collection of unique elements
+
+*Meaning there can be no repetitions of the same object inside the set
+
+
+CREATING A SET
+
+myset=set()
+myset.add(1)
+myset.add(2)
+myset.add(2)        //Will only show {1,2} in the output as repeated values are 		      not allowed
+
+
+
+
+*You can cast a list as a set
+
+mylist=[1,1,1,1,1,2,2,2,2,3,3,3]
+
+set(mylist)        //Will show only {1,2,3}
+

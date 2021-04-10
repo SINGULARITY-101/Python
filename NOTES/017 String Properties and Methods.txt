@@ -1,0 +1,119 @@
+017 STRING PROPERTIES AND METHODS
+
+
+IMMUTABILITY OF STRINGS
+
+
+*It means you can't use indexing to change individual elements of a string
+
+
+
+
+
+Example
+
+name="sam"
+
+
+*Now if we want to change the s to p to get pam, we might think of doing something like-
+
+
+name[0]="P";
+
+
+
+
+*But if you run this code you will get an error. Instead to perform this task we will use string concatenation like this-
+
+
+
+
+last_letters=name[1:]      #This will give us "am"
+
+"P"+ last_letters	   #This will give us "Pam" and it is string concatenation
+
+
+
+
+
+
+*To do multiple string concatenations (String multiplication), you can use the multiplication sign
+
+letter=z
+letter*10     #This will give us 'zzzzzzzzzz'
+
+
+
+
+
+
+
+
+IN-BUILT STRING METHODS
+
+
+*All string methods return new values, and DO NOT change the existing string
+
+*Cased characters are any characters that can be expressed in upper or lower case 
+
+*Define a string and write "x." in the cell and hit tab
+
+*You will get a list of functions that you can perform on that string
+
+*Some Useful functions are-
+
+
+
+
+
+
+ -string.upper(): Capitalizes every cased character 
+
+
+ -string.lower(); Makes every cased character lower case
+
+
+ -string.split("<character>"): Used to quickly create a list off a string based on spaces or                                letter you pass in  (VERY IMPORTANT AND USEFUL)
+
+
+ 
+
+ -sting.replace(old,new,[count]): Returns a copy of the string where all occurences of a                                       substring is replaced with another string
+
+
+				  old- The substring you want to replace
+				  
+				  new- New substring which will replace the old substring
+				  
+				  count(optional)- Number of times you want to replace the                                                      old substring with the new substring
+
+						   If not specified, all occurences are	 					                   Replaced
+
+
+
+
+  -stripping
+
+
+	> string.strip(): Returns a new string after removing any leading(beginning) and 			          trailing(ending) whitespaces including tabs (\t)
+
+        > string.rstrip(): Returns a new string with the trailing whitespaces removed. It is                            easier to remember because we are removing whitespaces from the 			           "right" side of the stirng
+
+	> string.lstrip(): Returns a new string with the leading whitespaces removed. It is 			           easier to remember as we are removing whitespaces from the "left" 			   side of the string
+
+
+
+        If a character argument is provided then it will remove those characters from the            string's trailing and leading places
+
+	The string itself remains unchanged
+
+	It does not remove charcters from the middle of the string. Only beginning and 	             ending
+
+
+
+
+
+
+
+
+

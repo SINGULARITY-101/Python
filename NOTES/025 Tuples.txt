@@ -1,0 +1,85 @@
+025 TUPLES IN PYTHON
+
+*Tuples are very similar to lists. However they have one key difference- Immutability
+
+
+*Once an element is inside the tuple it cannot be reassigned
+
+
+*Tuples use parenthesis (1,2,3)
+
+
+*Can use len(tuple) to find the length of the tuple
+
+
+*Can mix and match datatypes just like a list
+
+t=("ONE",2)
+
+
+*Just like a list you can use slicing and indexing
+
+
+*Tuple is useful in a program when we want to ensure that elements in a program are not re-assigned or altered  (helps ensure data integrity)
+
+
+
+
+
+
+
+
+
+
+
+*You can also skip the parentheses while creating a tuple. Python automatically converts comma-seprted values into a tuple 
+
+
+EXAMPLE
+
+tuple1="a","b","c"
+tuple1
+
+OUTPUT:- ('a','b','c')
+
+
+
+
+
+
+*Tuples are often used to create multiple variables with a single statement
+
+
+
+EXAMPLE
+
+a,b=1,2
+
+a
+b
+
+
+OUTPUT: 1
+        2 
+
+
+
+
+
+
+USEFUL METHODS 
+
+*Tuples have only two built-in methods:-
+
+
+ t.count("a")            -Shows how many times a has occured in the tuple
+ t.index("a")		 -Returns the index at which a appeared for the first 			                          time
+
+
+
+
+
+
+
+
+

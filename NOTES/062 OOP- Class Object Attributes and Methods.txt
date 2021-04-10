@@ -1,0 +1,197 @@
+062 OOP- CLASS OBJECT ATTRIBUTES AND METHODS
+
+
+
+*There might be some attributes that are going to be the same for any instance of a class
+
+*For example: For the Dog() class , for every dog it is sure that every dog will be a mammal
+
+
+
+
+
+*So we declare it at the class object level. Instead of having a particular instance always say that the dog is a mammal, we define an attribute above our innit method
+
+*These class object attributes will be the same for any instance of a class
+
+
+
+
+
+*Whats special about these is that since we know its going to be the same for each instance of the class, we do not use the self keyword when assigning them because the self keyword is a reference to a particular instance of a class
+
+*When using them inside a method or a __init__ call we can refernce them either by saying:-
+
+
+self.pi		(i.e. self.<class_object_attribute>)
+
+
+OR
+
+
+Circle.pi        (i.e. <class_name>.<class_object_attribute>)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*METHODS
+
+
+
+-They are basically functions defined inside the body of a class and they are used to perform operations that sometimes use the actual attributes of the object we created
+
+-It is basically an action our object can take
+
+
+
+
+-The self keyword is placed inside the parenthesis when we define the bark() method to connect it to the actual object
+
+-One of the key difference between attributes and methods is in the way we call them. The attributes never have opening and closing parenthesis because its not something we execute, While methods will need to be executed so there needs to be opening and closing parenthesis
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Dog():
+    
+    #CLASS OBJECT ATTRIBUTE
+    #SAME FOR ANY INSTANCE OF A CLASS
+    
+    species="mammal"
+    
+    def __init__(self,breed,name):
+        
+        self.breed=breed
+        self.name=name
+        
+     
+        
+        
+        
+    #OPERATIONS/ACTIONS -----> METHODS
+    
+    def bark(self):
+        
+        print("WOOF!")
+        
+        
+
+
+
+
+
+
+
+
+my_dog=Dog("Lab","Frankie")
+
+
+my_dog.bark()     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-Usually methods will use the information about the object itself
+
+EXAMPLE we are changing the bark() function so that it prints the name of the dog along with the woof
+
+
+
+def bark(self):
+	print("WOOF! my name is {}".format(self.name))
+
+
+
+
+
+
+
+-Now we passed self.name instead of only name because we need to refer to the particaular instance of the dog's name. Because when we pass the name in the beginning, it gets connected to the object through the use of the self keyword
+
+-So when we run the bark() method, Python will ask what is the dog's name for this particular instance of the dog object?. And it finds the name through the self.name call
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-Now methods can take outside arguments like this :
+
+
+
+
+def bark(self,number):
+	
+	print("Woof! my name is {} and number is {}".format(self.name,number))
+
+
+
+
+-Notice how number is not called as self.number because number is being provided to us by the user when we call bark() and it is not referencing some particular attribute for that instance of the class like breed or name
+
+-Basically to work with attributes you need the self keyword
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

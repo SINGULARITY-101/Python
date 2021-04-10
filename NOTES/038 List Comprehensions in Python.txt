@@ -1,0 +1,86 @@
+038 LIST COMPREHENSIONS IN PYTHON
+
+*Unique way of quickly creating a list in python
+
+
+*Are a good way to avoid using for loop and append statement to create lists
+
+
+
+
+mylist=[]
+
+for item in mystring:
+    mylist.append(item)
+
+
+
+Can be done simply by typing
+
+
+
+mylist=[letter for letter in mystring] 
+
+OR
+
+
+mylist=[x for x in "word"]
+
+
+OR
+
+
+mylist=[num for num in range(0,11)]
+
+
+OR
+
+
+mylist=[num**2 for num in range(0,11)]
+
+
+
+
+
+
+
+*You can use this on any iterable object
+
+
+*You can also add if-else conditions and nested loops as well but the order will be a bit different and it gets quite complicated so fuck that
+
+
+
+
+
+mylist =[x for x in range(0,11) if x%2==0]     //for even numbers
+
+OR
+
+mylist=[x**2 for x in range(0,11) if x%2==0]   //for square of even numbers
+
+
+
+
+
+
+*You can do complex caluclations as well
+
+
+
+  celcius=[0,10,20,34.5]
+
+  fahrenheit=[( (9/5)*temp + 32) for temp in celcius]
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,102 @@
+019 STRING FORMATTING AND PRINTING
+
+
+*STRING INTERPOLATION 
+- Basically means sticking a variable in a string
+- There are multiple ways to format strings for printing variables in them
+- This helps us avoid using string concatenation every time
+
+*Two methods
+
+- .format() method
+
+	-A good way to format objects into your strings for print statements is with the          string.format() method
+
+	EXAMPLE
+
+	print("THIS IS A STRING {}".format("INSERTED"))
+	
+	-What the format method did was insert the INSERTED text where the curly braces were          present
+
+
+	-ADVATANGES
+		+Allows us to insert strings using string positions
+		  
+		  EXAMPLE
+		  print("THE {} {} {}".format("fox","brown","quick"))
+
+		  By default format() will supply the words in order. However you can change                   the order by using indexes
+
+		  print("THE {2} {1} {0}".format("fox","brown",quick"))
+
+
+		
+		+Allows us to insert strings using keywords
+
+		  EXAMPLE
+		  print("THE {q} {b} {f}".format(f="fox",b="brown",q="quick"))
+
+
+		
+		
+		+Allows us to do float formatting as well (adjust the width and                               precision of the floating point number)
+		
+		SYNTAX  
+		{variable:width.precision f}
+		
+		-The width value decides how wide we want the string number to be                             and it adds white spaces accordingly
+	
+		-Precision sets how many decimal spaces we want after the number
+
+		 EXAMPLE
+
+		 print("THE RESULT IS {r:1.3f}".format(r=result))
+
+
+
+	 
+
+
+
+
+
+
+
+- f-strings (formatted string literals)
+
+	-Newer than format method
+	-Allows us to skip writing format method and write the varaible name
+	 drectly in the curly braces
+
+	EXAMPLE
+	name="VISHESH"
+	age=3
+	print(f"{name} is {age} years old")
+
+
+	OUTPUT- VISHESH is 3 years old
+
+
+
+
+
+
+NOTE: It is also possible use the string concatenation operator + to combine strings             with other variable values, however, those values must first be converted to strings         using the str function.
+
+
+      All string methods return new values, and DO NOT change the existing string unlike       most list methods which work on the original list 
+
+
+
+
+
+
+CHECK OUT THE GITHUB IF YOU WANT MORE INFORMATION
+
+
+
+
+
+
+
+
