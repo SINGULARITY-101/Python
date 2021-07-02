@@ -1,0 +1,5754 @@
+007  BASIC COMMAND LINES
+
+*cd- Lists the current directory.
+
+*dir- Returns the contents of the directory.
+
+*cd <name_of_the_folder> - Used to move between different folders.
+
+*cd .. - Used to move back up a directory.
+
+*cls - Clears the Entire cmd screen.
+
+
+
+
+Esc+a : Incert cell above
+Esc+b : Incert cell below
+Esc+m : Make a cell markdown
+
+
+
+
+
+
+008 RUNNING PYTHON CODE
+
+*There are several ways to run python code
+
+*There are 3 main types of environments (actual thing you are going to be writing python code on)
+
+ -Text Editors
+	*They are just general editors and can work with a variety of file types
+	 Example- Atom and Sublime Text
+
+ -Full IDEs
+	*Development Environments designed specifically for python
+	*Lots of extra functionality
+	 Example- PyCharm and Spyder
+
+ -Notebook Environments
+	*Great for learning
+	*See input and output side-by-side
+	*Supports Inline Markdown notes (Normal text which is not code)
+	*They have a special file format (.ipynb)
+	 Example- Jupyter Notebook
+
+
+	* JupyterNotebook system uses a cell based system meaning you write code in a cell 	  and see the output right below the cell
+	* Shortcut to run a cell- Shift+Enter
+	* To add markdown notes, use the dropdown menu that says code and select markdown 	  (The In[] will disappear indicating it is a markdown text)
+
+	* You cannot open notebook files directly by double clicking. You will have to use 	  the jupyter notebook environment to open notebook files
+
+
+
+
+
+
+
+
+009 GETTING THE COURSE MATERIAL
+
+* Search on google - github pierian data complete python 3 bootcamp
+
+
+
+
+
+
+
+
+
+
+
+PYTHON OBJECT AND DATA STRUCTURE BASICS
+
+
+
+
+
+
+
+011 INTRODUCTION TO BASIC DATA TYPES
+
+*Just meh introduction
+
+
+
+
+
+012 NUMBERS
+
+*There are two main number types
+
+ -Integers which are whole numbers
+
+ -Floating point numbers which are numbers with a decimal
+
+
+
+*Calculative operations
+- 2+2, 2-2, 2*2, 2/2 , 2%2
+
+-Power operation: 2**3=8
+
+
+
+
+
+
+
+
+
+014 VARIABLE ASSIGNMENTS	
+
+*Variable names follow usual rules
+
+
+
+*Python uses dynamic typing which means you can reassign variables to the different data types
+*This makes python very flexible in assigning data types, this is different than other languages that are statically typed
+
+EXAMPLE :
+
+my_dogs=2;
+
+my_dogs=["Sammy", "Frankie"]
+
+//Okay in Python
+
+
+*PROS of dynamic typing
+ -Not having to write the actual data type
+ -Makes the code readable
+
+*CONS of dynamic typing
+ -May result in bugs
+
+
+
+type()
+*Tells us the datatype of a variable
+
+type(a) 
+
+
+
+Kernal restart
+*Use this if you are getting weird errors. This will clear all the variables and you will have to run all the cells again
+
+
+
+
+
+
+
+
+
+
+
+
+
+015 INTRODUCTION TO STRINGS
+
+
+*Strings are seuqence of characters. Can use single quotes or double quotes
+
+Example- 'hello', "hello", "I don't do that"
+
+*Strings are ORDERED SEQUENCES and because of which we can use indexing and slicing to grab sub-sections of the string
+
+
+
+
+*Indexing allows you to grab a single character from a string
+*Python also supports reverse indexing which can be used to grab the last letter of the string in case we dont know how long the actual string is
+
+Syntax- mystring[index_number]
+
+
+
+
+
+
+*Slicing allows you to grab a subsection of multiple characters
+
+Syntax- mystring[start:stop:step]
+
+NOTE- stop is the index you will go up to (but not include)
+
+
+Example
+mystring[2:]  - Starting from index 2 and going all the way to the end
+
+mystring[:3]  - Starting from start and going up to 3 (not including 3)
+
+mystring[3:6] - Starting from 3 and going up to 6
+
+mystring[::3] - Going from beginning to end with step size 3
+
+mystring[::-1]- For reversing a string
+
+
+
+
+
+
+
+*\n,\t are called escape sequences
+
+
+
+What you type 		What you get		Example			print(example)
+
+1. \'			'		      'What\'s up?'		 What's up?
+
+2. \"			"		      "That's \"cool\""		That's "cool"
+
+3. \\ 			\		    "Look, a mountain: /\\"	Look, a mountain: /\
+
+4. \n						"1\n2 3"		   1
+									   2 3
+
+
+
+*In addition, Python's triple quote syntax for strings lets us include newlines literally (i.e. by just hitting enter on our keyboard, rather than using the special "\n" sequence)
+We can use them anywhere we want to define a string
+
+
+
+
+
+
+triplequoted_hello= ""hello
+		      world"""
+
+print(triplequoted_hello)
+
+
+
+
+
+
+
+OUTPUT:- hello
+	 world
+
+
+
+
+
+
+
+
+
+
+
+*len function
+- Returns the length of the string
+- Includes spaces
+
+Syntax- len("I am")
+
+- Returns 4 including the space
+- Can also be used to get the length of lists 
+
+
+my_list=[1,2,3,4,5]
+len(my_list)
+
+OUTPUT- 5
+
+
+
+
+
+
+NOTE that special characters like `\n` and escaped characters like `\"` count as a single character, even though they are written and sometimes printed as 2 characters.
+
+
+
+
+
+
+
+
+
+
+
+*To print shit in the same line use the end argument:
+
+print("hello",end=" ")
+print("world",end=" ")
+
+
+
+OUTPUT:- hello world
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+017 STRING PROPERTIES AND METHODS
+
+
+IMMUTABILITY OF STRINGS
+
+
+*It means you can't use indexing to change individual elements of a string
+
+
+
+
+
+Example
+
+name="sam"
+
+
+*Now if we want to change the s to p to get pam, we might think of doing something like-
+
+
+name[0]="P";
+
+
+
+
+*But if you run this code you will get an error. Instead to perform this task we will use string concatenation like this-
+
+
+
+
+last_letters=name[1:]      #This will give us "am"
+
+"P"+ last_letters	   #This will give us "Pam" and it is string concatenation
+
+
+
+
+
+
+*To do multiple string concatenations (String multiplication), you can use the multiplication sign
+
+letter=z
+letter*10     #This will give us 'zzzzzzzzzz'
+
+
+
+
+
+
+
+
+IN-BUILT STRING METHODS
+
+
+*All string methods return new values, and DO NOT change the existing string
+
+*Cased characters are any characters that can be expressed in upper or lower case 
+
+*Define a string and write "x." in the cell and hit tab
+
+*You will get a list of functions that you can perform on that string
+
+*Some Useful functions are-
+
+
+
+
+
+
+ -string.upper(): Capitalizes every cased character 
+
+
+ -string.lower(); Makes every cased character lower case
+
+
+ -string.split("<character>"): Used to quickly create a list off a string based on spaces or                                letter you pass in  (VERY IMPORTANT AND USEFUL)
+
+
+ 
+
+ -string.replace(old,new,[count]): Returns a copy of the string where all occurences of a                                       substring is replaced with another string
+
+
+				  old- The substring you want to replace
+				  
+				  new- New substring which will replace the old substring
+				  
+				  count(optional)- Number of times you want to replace the                                                      old substring with the new substring
+
+						   If not specified, all occurences are	 					                   Replaced
+
+
+
+
+  -stripping
+
+
+	> string.strip(): Returns a new string after removing any leading(beginning) and 			          trailing(ending) whitespaces including tabs (\t)
+
+        > string.rstrip(): Returns a new string with the trailing whitespaces removed. It is                            easier to remember because we are removing whitespaces from the 			           "right" side of the stirng
+
+	> string.lstrip(): Returns a new string with the leading whitespaces removed. It is 			           easier to remember as we are removing whitespaces from the "left" 			   side of the string
+
+
+
+        If a character argument is provided then it will remove those characters from the            string's trailing and leading places
+
+	The string itself remains unchanged
+
+	It does not remove charcters from the middle of the string. Only beginning and 	             ending
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+019 STRING FORMATTING AND PRINTING
+
+
+*STRING INTERPOLATION 
+- Basically means sticking a variable in a string
+- There are multiple ways to format strings for printing variables in them
+- This helps us avoid using string concatenation every time
+
+*Two methods
+
+- .format() method
+
+	-A good way to format objects into your strings for print statements is with the          string.format() method
+
+	EXAMPLE
+
+	print("THIS IS A STRING {}".format("INSERTED"))
+	
+	-What the format method did was insert the INSERTED text where the curly braces were          present
+
+
+	-ADVATANGES
+		+Allows us to insert strings using string positions
+		  
+		  EXAMPLE
+		  print("THE {} {} {}".format("fox","brown","quick"))
+
+		  By default format() will supply the words in order. However you can change                   the order by using indexes
+
+		  print("THE {2} {1} {0}".format("fox","brown",quick"))
+
+
+		
+		+Allows us to insert strings using keywords
+
+		  EXAMPLE
+		  print("THE {q} {b} {f}".format(f="fox",b="brown",q="quick"))
+
+
+		
+		
+		+Allows us to do float formatting (adjust the width and precision of the 		 floating point number)
+		
+		SYNTAX  
+		{variable:width.precision f}
+		
+		-The width value decides how wide we want the string number to be                             and it adds white spaces accordingly
+	
+		-Precision sets how many decimal spaces we want after the number
+
+		 EXAMPLE
+
+		 print("THE RESULT IS {r:1.3f}".format(r=result))
+
+
+
+	 
+
+
+
+
+
+
+
+- f-strings (formatted string literals)
+
+	-Newer than format method
+	-Allows us to skip writing format method and write the varaible name
+	 directly in the curly braces
+
+	EXAMPLE
+	name="VISHESH"
+	age=3
+	print(f"{name} is {age} years old")
+
+
+	OUTPUT- VISHESH is 3 years old
+
+
+
+
+
+
+NOTE: It is also possible use the string concatenation operator + to combine strings               with other variable values, however, those values must first be converted to strings         using the str function.
+
+
+      All string methods return new values, and DO NOT CHANGE THE EXISTING STRING unlike           most list methods which work on the original list 
+
+
+
+
+
+
+CHECK OUT THE GITHUB IF YOU WANT MORE INFORMATION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+021 LISTS IN PYTHON
+
+*Lists are ordered seuqences and can hold a variety of data types
+
+*They use [] brackets and commas to seprate objects in the list
+
+mylist=["one","two","three"]
+
+
+
+
+
+*Lists support indexing and slicing like strings
+
+
+  mylist[0]- Will give 'one' as output
+  mylist[1:]- Will give ['two',three'] as output
+
+	
+
+
+
+
+
+*Len can be used to get the number of elements in the list
+
+ len(mylist)- Will give 3 as output
+
+
+
+
+
+*Lists can also be concatented
+
+ newlist= mylist+anotherlist
+
+
+
+
+
+
+
+
+*Lists can BE MUTATED UNLIKE STRINGS
+
+
+ newlist[0]="ONE"
+
+
+
+
+*Lists support negative indexing
+
+
+
+
+
+
+
+
+
+
+
+
+
+*NOTE: Unlike string methods, most list methods modify the original list rather than returning a new one 
+
+
+
+ADDING AN ELEMENT TO THE END OF THE LIST
+*Type "newlist." and hit tab
+*You will see all the methods that are available to you
+*Here, we will use the append method
+
+ newlist.append("six")
+
+
+
+
+
+
+
+INSERTING A VALUE AT A SPECIFIC INDEX
+*We will use the insert method
+
+ newlist.insert(3,"banana")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+REMOVING AN ITEM FROM THE LIST
+*We will use the pop method
+
+ newlist.pop()
+
+*By default, the position is negative one (reverse indexing). The very end of the list
+
+*To delete a specific index value from the list supply the index variable to the pop  function
+
+ newlist.pop(3)
+
+
+
+
+
+
+REMOVING A SPECIFIC VALUE FROM THE LIST
+*We will use the remove method
+
+ newlist.remove("banana")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATING A COPY OF THE LIST
+
+*NOTE: You cannot create a copy of a list by simply creating a new variable using the assignment operator (=). The new variable will point to the same list, and any modifications performed using one variable will affect the other 
+
+
+*So you will have to use the copy method
+
+
+
+ newlist=oldlist.copy()
+
+
+
+
+*Modifying the copied list does not affect the original list 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SORTING AND REVERSING METHODS IN LIST
+
+ newlist.sort()				//By default sorts in ascending 
+ newlist.reverse()
+
+*NOTE- These functions do not return any Value. Changes take place in the list itself
+
+
+
+
+
+
+SORT()
+
+*By default sort does not take any parameters. However it has two optional parameters:-
+
+
+
+ newlist.sort(key=.... , reverse=...)
+
+
+
+
+ reverse: If True, the sorted list is reversed (or sorted in Descending order)
+ key: Function that serves as a key for the sort comparision 
+
+
+
+
+
+*For sorting in descending order
+
+ 
+ newlist.sort(reverse=True)
+
+
+
+
+
+
+
+
+
+
+*If you want your own implementation for sorting, the sort() method also accepts a key function as an optional parameter
+
+Based on the results of the key function, you can sort the given list 
+
+
+
+
+
+
+EXAMPLE
+
+
+ newlist.sort(key=len)
+
+
+Here, len is the Python's built-in function to count the length of an element. The list is sorted based on the length of each element from lowest count to highest 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SORTED()
+
+*The simplest differnce between sort() and sorted() is that sort() changes the list directly and does not return any value, while sorted() does not change the original list and returns the sorted list
+
+
+
+ 
+ sorted(list,key=..,reverse=...)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+023 DICTIONARIES IN PYTHON
+
+
+
+*Dictionaries stores objects in an unordered way (unlike lists which stores objects in an ordered fashion)
+
+*However Dictionaries allows us to use key-value pairing instead
+
+*This key-value pair allows users to quickly grab objects without needing to know an index location
+
+
+
+
+
+
+
+*Dictionaires use curly braces:
+
+{'key1':'value1','key2':'value2'}
+
+
+
+my_dict={"key1":"value1","key2":"value2"}
+
+my_dict["key1"]       -value1
+
+
+
+
+
+
+
+*Dicationaries can also be created using the dict function :
+
+
+person2=dict(name="Vishesh",age=20)
+
+person2
+
+
+
+OUTPUT: {'name':'Vishesh','age':20}
+
+
+
+
+
+
+
+
+
+
+
+
+
+*Dictionaries- Use when you want to retrieve objects by name (key)
+	       However one drawback is it is unordered and it cannot be sorted
+  
+        Lists- Use when you want to retieve objects by location
+	       Ordered sequence can be indexed or sliced
+
+
+
+
+*Dictionaries are super flexible in the data types they can hold. Like they can include lists or other dictonaries
+
+
+d={"k1":123,"k2":[1,2,3],"k3":{"insidekey":100}}
+
+d["k2"]                    - [1,2,3]
+d["k3"]["insidekey"]       - 100
+d["k2"][1]                 - 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+ADDING NEW KEY-VALUE PAIRS TO DICTIONARIES
+ 
+ d={"k1":100,"k2":200}
+ 
+ d["k3"]=300
+
+
+
+
+
+
+OVERWRTING AN EXISTING KEY-VALUE PAIR
+
+ d["k1"]="NEW VALUE"
+
+
+
+
+
+REMOVING A KEY-VALUE PAIR
+
+ person1.pop("key1")
+
+
+
+
+
+
+
+
+
+
+
+
+GET() METHOD
+
+*Used to get a value associated with a key while avoiding getting key error in case the key is not present
+
+The get() method also accepts a default value which is returned if the key is not present in the dictionary 
+
+
+
+ person.get("key1","Default")
+
+
+
+
+
+
+
+
+
+
+USEFUL METHODS
+
+ d.keys()               - Shows the Keys
+ d.items()              - Shows the key-value pairs
+ d.values()             - Shows the values
+
+ a=d.copy()		- Returns a copy of the dictionary 
+
+ d1.update(d2)          -Updates the dictionary with the elements from another dictionary or
+                         from an iterable (genrally tuples) of key-value pairs 
+
+                         If update is called without passing any parameters the dictionary                            remains unchanged 
+ 
+                         
+
+
+
+
+
+
+
+NOTE: The result of the keys(),values() or items() looks like lists but do not support             indexing operator for retreiving elements
+
+      In order to support indexing, you will have to cast the result into a list like this
+
+
+
+      list(d.keys())                -['key1','key2']
+      
+      list(d.keys())[0]             - 'key1'    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+025 TUPLES IN PYTHON
+
+*Tuples are very similar to lists. However they have one key difference- Immutability
+
+
+*Once an element is inside the tuple it cannot be reassigned
+
+
+*Tuples use parenthesis (1,2,3)
+
+
+*Can use len(tuple) to find the length of the tuple
+
+
+*Can mix and match datatypes just like a list
+
+t=("ONE",2)
+
+
+*Just like a list you can use slicing and indexing
+
+
+*Tuple is useful in a program when we want to ensure that elements in a program are not re-assigned or altered  (helps ensure data integrity)
+
+
+
+
+
+
+
+
+
+
+
+*You can also skip the parentheses while creating a tuple. Python automatically converts comma-seprted values into a tuple 
+
+
+EXAMPLE
+
+tuple1="a","b","c"
+tuple1
+
+OUTPUT:- ('a','b','c')
+
+
+
+
+
+
+*Tuples are often used to create multiple variables with a single statement
+
+
+
+EXAMPLE
+
+a,b=1,2
+
+a
+b
+
+
+OUTPUT: 1
+        2 
+
+
+
+
+
+
+USEFUL METHODS 
+
+*Tuples have only two built-in methods:-
+
+
+ t.count("a")            -Shows how many times "a" has occured in the tuple
+ t.index("a")		 -Returns the index at which "a" appeared for the first 			                  time
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+026 SETS IN PYTHON
+
+*Sets are unordered collection of unique elements
+
+*You can't use indexing on sets 
+
+*Meaning there can be no repetitions of the same object inside the set
+
+
+CREATING A SET
+
+myset=set()
+myset.add(1)
+myset.add(2)
+myset.add(2)        //Will only show {1,2} in the output as repeated values are 		              	      not allowed
+
+
+
+
+*You can cast a list as a set
+
+mylist=[1,1,1,1,1,2,2,2,2,3,3,3]
+
+set(mylist)        //Will show only {1,2,3}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+027 BOOLEANS IN PYTHON
+
+
+*Allows you to convey true or false statements
+
+*Make sure to capitalise T and F in True and False
+
+*You can use the none keyword for an object that we dont want to assign yet but might wanna assign it later in the program
+
+b=none    //Now python won't show error when I call b
+
+
+
+
+*All numbers are treated as true apart from 0
+
+bool(73)         True
+bool(0)          False
+
+
+
+*All strings are treated as true except the empty string
+
+bool("vk")       True
+bool("")         False
+
+
+
+
+*Boolean-to-integer coversion
+
+int(True)        1
+int(False)       0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+028 IO WITH BASIC FILES IN PYHTON
+
+*If you want to know what a function does you can use shift + tab right next to the function to get information about the functions
+
+
+*The file you are working on should be in the same folder as all the notebooks
+
+
+*If you want to create a file using the jupyter notebook's magic functionality 
+
+
+%%writefile myfile.txt
+Hello this is a text file
+this is the second line
+this is the third line
+
+
+
+
+OPENING A TEXT FILE
+
+myfile=open("myfile.txt")
+
+OR
+
+with open("myfile.txt") as my_new_file:
+ contents=my_new_file.read()			//With this command you wont have 					                          to close the file mannualy 						                          using the close() command 
+					
+						  You can also provide various modes using 					          	  the mode argument
+
+
+
+*Make sure you write the name of the text file correctly and the text file is saved in the same directory as your jupiter notebook is working on
+
+
+*To see the current working directory, type "pwd" and save the text file in that directory
+
+
+
+
+
+
+METHODS FOR READING
+
+
+*myfile.read()    Returns a giant string of everything that is in the text file. 		                  So new lines are represented by \n
+	 	
+		  However once you re-execute this command, you will just get " " 		                  because now the file pointer is at the end of the file and it   		                  will have to be seeked to the beginning to the file
+
+
+
+*myfile.seek(0)       Returns the file pointer to the beginning of the file
+
+
+*myfile.readlines()   If you don't want the output to be just a giant string you can 		                      use this command which will return a list with each line in the file    		      being an element in the list
+
+
+*myfile.close()	      Closes the file 
+
+
+  
+
+
+
+
+FILE LOCATIONS
+
+*Now to open a text file at any location you can provide the full path inside the open command  
+
+*Make sure to put double backslashes instead of just single backslashes so that one backslash acts as an escape sequence
+
+
+  myfile=open("D:\\1_Mine\\Coding\\Python\\NOTES\\Booleans.txt")
+
+
+*Don't forget the .txt extension otherwise you will get an error 
+
+
+
+
+
+
+FILE MODES
+
+with open("myfile.txt",mode="r") as myfile:
+ contents=myfile.read()
+
+OR
+
+with open("myfile.txt",mode="a") as myfile:
+ myfile.write("APPENDING")
+
+OR
+
+with open("adsasd.txt",mode="w") as f:
+ f.write("I CREATED THIS FILE")
+
+
+*mode="r"            read only
+
+*mode="w"	     write only (will overwrite files or create new if file doesnt exist)
+
+*mode="a"            append only (will add on to files)
+
+*mode="r+"           reading and writing
+
+*mode="w+"           writing and reading (Overwrites existing files or creates a new file if                                          file doesn't exist)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+032  PYTHON COMPARISION OPERATORS
+
+meh pretty basic
+
+
+
+
+
+
+033 CHAINING COMPARISION OPERATORS
+
+*Use logical operators 
+ -and
+ -or
+ -not
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+034 IF, ELIF, ELSE STATEMENTS
+
+
+*Control flow in python makes use of colons and indentation
+
+*This indentation system is crucial in python and is what sets it apart from other programing languages 
+
+
+
+
+SYNTAX OF IF/ELSE/ELIF
+
+
+if some_condition:
+    #execute some code
+
+elif some_other_condition:
+    #do something different
+
+else:
+    #do something else
+
+
+
+*if/else/elif should be lined up
+
+
+
+
+
+
+
+
+
+*SHORTHAND IF CONDITIONAL EXPRESSION
+
+-A common use case of the if statement involves testing a condition and setting the value of  a variable based on the condition 
+
+
+if condition:
+ x=true_value
+else:
+ x=false_value
+
+
+
+-Python provides a shorter syntax, which allows writing such conditions in a single line of  code. It is known as a conditional expression, sometimes also referred to as a ternary  operator. It has the following Syntax:-
+
+
+
+x=true_value if <condition> else false_value
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+035 FOR LOOPS IN PYTHON 
+
+
+
+
+
+
+*SYANTAX FOR LOOP
+
+
+my_iterable=[1,2,3]
+
+for item_name in my_iterable:
+ print(item_name)
+
+
+*item_name is the variable that represents the objects inside the iterable (in this case a list) 
+
+
+*you can put for loops on strings, lists, dictionaries, tuple
+
+
+
+*For strings you can either declare strings or do like this
+
+ for letter in "abcde":
+  print("Its a letter")
+
+
+
+
+
+*tuple supports tuple enpacking which can be used for a variety of programs (we duplicate the strcuture of the items in the iterable and then unpack them to get access to the individual elements of the tuple)
+
+
+*Tuple enpacking is useful because many of the functions return information in the form of a list of tuples 
+
+
+
+
+
+
+
+
+
+*When you iterate through a dictionary, you only iterate throught the keys. To iterate through the items-
+ 
+  for item in d.items():
+        print(item)                             
+
+
+
+
+
+         OR
+
+
+   for (key,value) in d.items():
+       print(key)       //print(value)
+
+
+
+
+         OR
+
+
+
+
+
+   for item in d.values():
+      print(item)
+
+
+
+*Remember dictionaries are unordered
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+036 WHILE LOOPS IN PYHTON
+
+
+
+*SYNTAX
+
+while some_boolean_condition:
+ #do_something
+
+else:
+ #do_something_different
+
+
+
+*break, continue and pass
+ -break: Breaks out of the current enclosing loop
+
+ -continue: Goes to the top of the closest enclosing loop    
+             //allows next iteration of the loop to take place
+
+ -pass: Does nothing at all
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+037 USEFUL OPERARTORS IN PYTHON
+
+
+*RANGE function
+
+ -It is a Generator ( It is a special function which generates information without                       	      saving it all to memeory.)
+
+ -It is a more efficient way of genearating the numbers instead of having a giant list in      the memory
+
+
+ -range(starting,ending,step)
+
+
+ -It goes UPTO ending but NOT INCLUDING the ending
+
+ -Step is optional
+
+ -You can do shift+tab to see what parametes it can take
+
+
+ -for num in range(0,11,2)
+      print(num)
+
+
+ -If you want the numbers generated by the range in the form of a list you will have to cast   it to a list
+  
+  list(range(0,11,2)) 
+
+
+
+
+
+
+
+
+
+*ENUMERATE FUNCTION
+
+-It can take any iterable and return the index count and the object corresponding to it in the form of tuples
+
+-It can be used in conjecture with tuple enpacking to get index and the object correspoding to it seprately
+
+
+
+word="abcde"
+
+for item in enumerate(word):
+    print(item)
+
+
+
+
+
+word="abcde"
+
+for (index,letter) in enumerate(word):
+    print(index)
+    print(letter)
+    print("\n")
+
+
+
+
+
+
+
+
+
+
+
+*ZIP FUNCTION
+
+
+
+-Kind of like an opposite of enumerate
+
+-It zips together two lists
+
+
+ zip(list1,list2)
+
+
+
+
+-If you iterate through the zip function you will get the combined information of the two lists in the form of tuples
+
+
+
+for item in zip(list1,list2):
+    print(item)
+
+
+
+
+-You can do it with more than one list
+
+-If the lists are uneven, the zip function will zip the files only up to the elements in the smallest list. The rest of the elements will be ignored
+
+-You can use tuple enpacking to extract individual information
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*IN OPERATOR
+
+-Can be used to quickly check if an object is in the list
+
+-Returns a boolean value
+
+-Also works on other iterable object types
+
+
+
+
+
+
+
+
+
+
+
+
+*MATHEMATICAL FUNCTIONS
+
+-min(mylist)   Returns the minimum value in the list
+
+-max(mylist)   Return the maximum value in the list
+
+
+*use // to get the quotient without the decimals (that is get an integer)
+
+ 
+ 100/7      14.285714285714286
+
+ 100//7     14
+
+
+
+
+
+*RANDOM LIBRARY
+
+-It is built in and comes with a ton of built in functions
+
+-We will have to import functions from the library
+
+ 
+   from random import <function>
+
+
+-Hit tab after import to get a dropdown list of the available functions in the library
+
+
+
+
+
+
+-We are going to learn the shuffle function
+
+  
+  from random import shuffle
+
+
+-What it does is randomly shuffle around any list
+
+
+  shuffle(mylist) 
+
+
+-It does not return anything 
+
+
+
+
+
+
+
+
+-You can also invoke this function like this:-
+
+ import random
+ random.shuffle(mylist)
+
+
+
+
+
+
+
+
+
+-Another function to grab any random integer is randint
+
+    randint(min,max)
+
+-It will return a random number between min and max
+
+
+
+
+
+
+
+
+
+
+
+
+
+*ACCEPING USER INPUT
+
+-We will use the input function
+
+  result=input("what is your fav number?")
+
+-One thing to remember is that the input function accepts everything as a string
+
+-So if you pass a number, the output will be a string version of the number with quotes
+
+-So you will have to use type casting
+
+
+ int(result)    or    float(result)   or    result=int(input("fav number"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+038 LIST COMPREHENSIONS IN PYTHON
+
+*Unique way of quickly creating a list in python
+
+
+*Are a good way to avoid using for loop and append statement to create lists
+
+
+
+
+mylist=[]
+
+for item in mystring:
+    mylist.append(item)
+
+
+
+Can be done simply by typing
+
+
+
+mylist=[letter for letter in mystring] 
+
+OR
+
+
+mylist=[x for x in "word"]
+
+
+OR
+
+
+mylist=[num for num in range(0,11)]
+
+
+OR
+
+
+mylist=[num**2 for num in range(0,11)]
+
+
+
+
+
+
+
+*You can use this on any iterable object
+
+
+*You can also add if-else conditions and nested loops as well but the order will be a bit different and it gets quite complicated so fuck that
+
+
+
+
+
+mylist =[x for x in range(0,11) if x%2==0]     //for even numbers
+
+OR
+
+mylist=[x**2 for x in range(0,11) if x%2==0]   //for square of even numbers
+
+
+
+
+
+
+*You can do complex caluclations as well
+
+
+
+  celcius=[0,10,20,34.5]
+
+  fahrenheit=[( (9/5)*temp + 32) for temp in celcius]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+041   METHODS AND THE PYTHON DOCUMENTATION
+
+
+*Built-in objects in python have a variety of methods that you can use
+
+EXAMPLE
+-mylist.append(2)
+-mylist.pop()
+
+*To get list of methods available for various python objects, there are plenty of ways:
+ 
+ -write "mylist." and hit tab to get a list of methods
+
+
+*If you want to know what a particular method does you can either write that function and hit shift+tab (jupyter notebook only) or call the help function:
+
+ help(mylist.insert)
+
+
+
+
+*The name "insert" only exists within lists, it does not exist as a standalone name like built in functions such as max or len
+
+*So if we would have called help(insert), python would have complained that no variable named "insert" exists
+
+
+
+
+*Other way you can get a guide on what the methods do is by reading python documentation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+042 FUNCTIONS IN PYTHON
+
+*Functions allows us to create blocks of code that can be easily executed multiple times without needing to constantly rewrite the entire block of code
+
+
+SYNTAX
+
+def name_of_funtion():
+    """
+
+      Docstring explains function
+
+
+    """
+
+    print("hello")
+
+
+
+
+OR
+
+
+
+
+def name_of_funtion(name):
+
+     print("Hello " +name)
+
+
+
+*Typically we use the return keyword to send back the result of the function instead of just printing it out
+
+*Return allows us to assign the output of a function to a new variable
+
+
+
+
+def add_function(num1,num2):
+
+  return num1+num2
+
+
+
+*Now if you use help with your custom defined funtion it wont show any description. Now to help with that we will use docstring (Documentation string)
+
+
+*Functions can be used to solve the pig latin problem( It is a way to transform a normal word into a secret keyword)
+
+RULES
+-If a word starts with a vowel, put ay at the end
+-If a word does not start with the vowel, put the first letter at the end and then add ay
+
+
+
+
+
+
+
+
+
+
+
+
+
+044 ARGS AND KWARGS IN PYTHON
+
+*Stands for arguments and keyword arguments
+
+*An argument is a variable, value or object passed to a function or method as input 
+
+
+
+
+ARGS
+
+
+*Suppose there is a function
+
+
+
+	def myfunc(a,b):
+	  return sum((a,b))*0.05
+
+
+
+ -a,b are examples of positional arguments
+ 
+ -Positional arguments are arguments that need to be include in the proper position or order
+
+ -If we want to work with multiple postitional arguments, we can assign a lot of parameters   to the function like this
+
+
+
+	def myfunc(a,b,c=0,d=0,e=0):
+	  return sum((a,b,c,d,e))*0,05
+
+
+
+ -But eventually you hit a limit. This is where *args comes in 
+
+ -*args allows a function to take an arbitrary number of arguments
+
+
+
+	def myfunc(*args):
+	  return sum(args)*0.05
+
+
+  -What this does it allows the function to take as many parameters as the user enters          and then treats them like a tuple inside the function
+
+
+  -It is not necessary that you have to use args word. It is an arbitrary choice. As            long as the * is there, you can use any word like *spam,*vk etc. But by                      convention use *args
+
+  -The word args essentially becomes a tuple
+
+
+  -Now since the parameters are treated like a tuple you can iterate through them
+
+
+	def myfunc(*args):
+    	  for item in args:
+            print(item)
+
+	myfunc(40,60,100,1,34)
+
+
+   O/P- 40
+        60 
+        100
+        1
+        34
+
+
+
+
+
+
+
+
+
+
+
+KWARGS
+
+
+*Similarly Python offers a way to handle an arbitrary number of keyworded arguments
+
+*An argument passed to a function or method which is preceeded by a keyword and an equals sign 
+
+
+
+
+*Instead of creating a tuple, a dictionary of key-value pairs is made and the word kwargs essentially becomes a dictionary 
+
+
+  def myfunc(**kwargs):
+    print(kwargs)
+
+  myfunc(fruit="apple",veggie="lettuce")
+
+
+O/P- {'fruit': 'apple', 'veggie': 'lettuce'}
+
+
+
+*Again the word kwargs is an arbitrary choice
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ARGS KWARGS COMBINATION
+
+
+
+*Example
+
+
+def myfunc(*args,**kwargs):
+    
+    print(args)
+    print(kwargs)
+    
+    print(" I would like {} {}".format(args[0],kwargs["food"]))
+
+
+
+myfunc(10,20,30,fruit="orange",food="eggs",animal="dog")
+
+
+
+
+
+
+
+O/P- (10, 20, 30)
+     {'fruit': 'orange', 'food': 'eggs', 'animal': 'dog'}
+     I would like 10 eggs
+ 
+
+
+
+
+*Args is said first and then kwargs. Therefore when we pass in the arguments in the function call the order should be maintained that is the tuple arguments should be passed first followed by the keyword arguments
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+050 LAMBDA EXPRESSIONS MAP AND FILTER FUNCITONS
+
+
+
+*Lambda expressions are a quick way to create what we call as anonymous functions which we use only one time and never reference again. We don't even name them. But before that we need to learn about map and filter
+
+
+
+
+
+
+
+*MAP FUNCITON
+
+-SYNTAX:
+
+map(function,iterable)
+
+
+
+-Suppose we have an iterable and we want to apply a function to each and every element of the iterable
+
+-We can use a for loop but thats a lot of code so its better to use map funciton
+
+-A map funciton basically applies the funciton you pass to each element of the iterable you pass
+
+
+-When you just run the map function like itself, it will return just a memory location. So you can get the items of the map either by using a for loop or by typecasting it to a list
+
+
+
+
+
+
+EXAMPLE
+
+
+
+def square(num):
+    return num**2
+
+my_nums=[1,2,3,4,5]
+
+for item in map(square,my_nums):    OR      list(map(square,my_nums))
+    print(item)
+
+
+OUTPUT- 1				    [1, 4, 9, 16, 25]
+	4
+	9	
+	16
+	25
+
+
+
+
+
+
+
+
+
+-The functions can be a lot more complex like:
+
+
+
+
+
+
+
+
+EXAMPLE
+
+
+
+
+
+def splicer(mystring):
+    if len(mystring)%2==0:
+        return "EVEN"
+    else:
+        return mystring[0]
+
+
+
+names=["Andy","eve","Sally"]
+
+
+
+list(map(splicer,names))
+
+
+
+
+
+
+OUTPUT- ['EVEN', 'e', 'S']
+
+
+
+
+
+
+
+
+
+-Notice how in the map syntax, we don't put () opening closing parenthesis after the function name because we are not calling the functions to be executed inside the map. Map is going to later on execute the function
+
+So a function is passed as an argument inside the map
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*FILTER FUNCTION
+
+
+
+-Filter function has a syntax very similar to map:
+
+
+
+filter(function,iterable)
+
+
+
+-Also, Filter when just run by itself will only return a memory location. So you will have to use a for loop or cast it into a list
+
+
+
+
+-HOWEVER, THE FUNCTION SHOULD ALWAYS RETURN A BOOLEAN VALUE (TRUE OR FALSE)
+
+-What filter does, is grab the objects inside the iterable that pass some sort of condition based on a function previously defined
+
+-Or we can say filter grabs those elements inside the iterable for which the function returns a boolean value of True
+
+
+
+
+
+
+EXAMPLE:
+
+
+
+def check_even(num):
+    return num%2==0
+
+
+mylist=[1,2,3,4,5,6]
+
+
+
+list(filter(check_even,mylist))   OR     for item in filter(check_even,mylist):
+						  print(item)
+								
+
+
+
+OUTPUT- [2, 4, 6]                          2
+					   4
+					   6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*LAMBDA EXPRESSIONS
+
+-Lambda expressions are also known as anonymous functions whose fucntionality is used only once and that is why we DON'T even give it a name NOR do we use the def keyword 
+
+
+
+
+-Example Function:
+
+
+def square(num):
+    return num**2
+
+
+
+This can be written as a lambda expression as follows:-
+
+
+
+lambda num:num**2
+
+
+
+-Notice how def keyword, function name, parenthesis and return keyword are removed
+
+-The return keyword is removed because it is assumed that we will return whatever's on the other side of the colon
+
+
+
+
+
+
+-Lambda expressions are typically not named but you can assign a name to them like this-
+
+
+square=lambda num:num**2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*LAMBDA EXPRESSION WITH MAP AND FILTER
+
+-If you notice earlier we had to actually define a funtion and use up space to use map or filter. However,if we intend to use it one time, we can save space by using lambda expressions
+
+
+
+
+-With map:-
+
+
+newlist=[1,2,3,4,5,6]
+
+list(map(lambda num:num**2,newlist))
+
+
+
+OUTPUT:- [1, 4, 9, 16, 25, 36]
+
+
+
+
+
+-With Filter :-
+
+
+list(filter(lamda num:num%2==0,newlist))
+
+
+
+
+OUTPUT:- [2, 4, 6]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+051 NESTED STATEMENTS AND SCOPE
+
+
+
+*When we create a variable name in python that name is stored in name space
+
+*Variable names also have a scope that determines their visibility to other parts of code
+
+*Scope allows python to have a set of rules and determine which variable we are referencing in our code
+
+
+
+
+*These rules are a LEGB rule format
+
+
+*LEGB stands for "Local - Enclosing function locals - global -built in"
+
+
+
+
+
+*L:Local- Names assigned in any way within a function (def or lambda) and not declared                 global in that function
+
+
+ E:Enclosing Function Locals- Names in the local scope of any and all enclosing functions 	                              (def or lambda), from inner to outer 
+
+ 
+ G:Global(module)- Names assigned at the top-level of a module file or declared global in a 		           def within the file
+
+ 
+ B:Built in(Python)- Names preassigned in the built-in names module: 		                                  open,range,SyntaxError... 
+
+
+
+
+
+*This is essentially the order in which Python will look for variables
+
+
+
+
+
+
+
+
+
+
+*EXAMPLE
+
+
+
+
+
+name= "THIS IS A GLOBAL STRING"
+
+
+def greet():
+    
+  
+    
+    name="Sammy"
+    
+    def hello():
+        print("Hello "+name)
+        
+    hello()
+    
+
+
+greet()
+
+
+
+
+OUTPUT: Hello Sammy
+
+
+
+
+
+
+
+*What actually is happening there?
+ Ans- When we call the function greet(), the name is assigned to "SAMMY"
+      then the hello() function is defined and after that it is called.
+      The function first looks in the local scope that is within the 
+      hello() function itself and checks whether name is assigned any 
+      value. As you can see it is not assigned any value so Python
+      goes to the next level which is "Enclosing function locals" 
+      (greet() encloses hello()). So it looks in the greet() function
+      and we can see that name has been assigned a value="sammy" and
+      that is why when we call greet() we get output as "Hello Sammy".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*EXAMPLE WITH LABELLINGS
+
+
+
+
+#GLOBAL
+name= "THIS IS A GLOBAL STRING"
+
+
+def greet():
+    
+    #ENCLOSING FUNCTION LOCAL
+    name="Sammy"
+    
+    def hello():
+        #LOCAL
+        name="I AM A LOCAL"
+        print("Hello "+name)
+        
+    hello()
+    
+
+
+
+
+
+
+
+
+
+
+*The only level above global is the built-in function level. If you are not sure if a name is a built-in function, you can call help on it and if something comes out it means its built-in
+
+
+
+
+
+
+
+*GLOBAL KEYWORD
+
+
+-Consider this example:-
+
+
+
+
+
+
+x=50
+
+def func(x):
+    print(f"x is {x}")
+    
+    #LOCAL REASSIGNMENT
+    
+    x=200
+    print(f"I just locally changed x to {x}")
+
+
+
+
+
+func(x)                                             print(x)
+
+
+OUTPUT:- x is 50
+I just locally changed x to 200			    50	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-If you notice when you printed the variable x by using print(x) the value is still 50 even though you changed it to 200 inside the function func(x)
+
+The reason for this is because this reassignment is only happening in the local name space inside the function, it is not going to effect anything at a higher scope
+
+This is what scope really is. So when you declare variables inside of a function definition, those variables only have a scope local to this function
+
+
+
+
+
+
+-So if you want to actually make changes to the global variable, you can use the global keyword as follows:-
+
+
+
+
+
+
+x=50
+
+def func():
+    global x
+    
+    print(f"x is {x}")
+    
+    #LOCAL REASSIGNMENT ON A GLOBAL VARIABLE
+    
+    x="NEW VALUE"
+    print(f"I just locally changed global x to {x}")
+
+
+
+
+
+
+print(x)			
+
+
+OUTPUT:-50 
+
+
+
+
+func()
+
+OUTPUT:- x is 50
+         I just locally changed global x to NEW VALUE
+
+
+
+
+
+print(x)
+
+OUTPUT:- NEW VALUE
+
+
+
+
+
+
+
+
+
+
+-The global keyword tells python to jump to the global level and grab the x variable from there and then whatever happens to x inside the function will effect the global x
+
+
+-Now because of the power of the global keyword, its use should be avoided unless its absolutely necessary. However, if you still need to work on the global variable you should do it like this:-
+
+
+
+
+
+
+
+x=50
+
+def func(x):
+    
+    x="NEW VALUE"
+    return x
+
+
+
+
+
+print(x)
+
+OUTPUT:-50
+
+
+
+x=func(x)
+
+
+
+
+print(x)
+
+OUTPUT:- NEW VALUE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+052 - 054 TEST
+
+
+
+
+
+
+
+
+Write a Python function that checks whether a word or phrase is palindrome or not.
+
+Note: A palindrome is word, phrase, or sequence that reads the same backward as forward, e.g., madam,kayak,racecar, or a phrase "nurses run". Hint: You may want to check out the .replace() method in a string to help out with dealing with spaces. Also google search how to reverse a string in Python, there are some clever ways to do it with slicing notation.
+
+
+
+
+
+
+def palindrome(s):
+    newstring=s.replace(" ","")
+    
+    return newstring==newstring[::-1]
+
+
+
+
+
+
+
+
+
+
+055-059 MILESTONE PROJECT-1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+060 OBJECT ORIENTED PROGRAMMING INTRODUCTION
+
+
+*A function attached to an object is called a METHOD
+*Non-function things attached to an object are called ATTRIBUTES
+
+
+
+*Object oriented programming allows programmers to create their own objects that have methods and attributes
+
+
+*Recall that after defining a string, list, dictionary or other objects, you were able to call methods off of them with the .method_name() syntax
+
+
+*These methods act as functions that use information about the object, as well as the object itself to return results , or change the current object
+
+
+*OOP allows users to create their own objects and create code that is more repeatable and organised
+
+
+
+
+SYNTAX
+
+
+
+class NameOfClass():				//camel cased
+
+	def__init__(self,param1,param2):	//looks like a function but it is called a 
+		self.param1=param1	        //method when inside an object/class
+		self.param2=param2
+
+	def some_method(self):
+		#perform some action
+		print(self.param1)
+
+
+
+
+
+
+
+*__init__ : it is a special method that allows you to create an instance of the actual 	                 object
+
+*param1,param2: these are the parameters python expects you to pass when you create an                       instance of the actual object
+
+*self: we use this keyword to connect methods/parameters to the class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+061 OOP-ATTRIBUTES AND CLASS KEYWORD
+
+
+
+*Classes=Objects
+
+
+*Class names should use camel case
+
+
+
+
+
+
+
+
+SYNTAX
+
+
+
+
+class Dog():
+	
+	def __init__(self,breed):
+		self.breed=breed		#All 3 can breeds can take different names
+						#but it is suggested to keep the names same
+
+
+
+
+
+
+
+
+my_dog=Dog(breed="lab")
+
+
+
+type(my_dog)				OUTPUT:- __main__.Dog
+
+mydog.breed				OUTPUT:- lab
+
+
+
+
+
+
+
+
+
+*UNDESTANDING WHATS HAPPENING
+
+-Attributes are the charaterisics of a class
+-Parameters get assigned to the attributes
+
+
+-__init__ can be thought of as the constructor of the class and its going to be called automaically when you create an instance of the class
+
+
+
+-The self keyword represents the instance of the class itself, most OOP languages pass it as an hidden paramter but Python does not do that and we need to declare it explicitly. We could have written any name we wanted but by convention it is recommended to use self
+
+-So, when you create an instance of the Dog() class what python will do is call the init method and it is going to use self to represent the instance of the class itself and then its going to expect the user to pass the argument breed
+
+
+
+-So what is happening is basically the user passes the argument or parameter and then it gets assgined to the attribute which you can later call on your class instance 
+
+
+
+
+
+
+
+
+
+
+
+*Clearer version to undestand self
+
+
+
+
+
+class Dog():
+
+	def __init__(self,mybreed):
+
+       		  #Attributes
+       		  #We take in the parameter
+      		  #Assign it using self.attribute_name
+
+		  self.my_attribute=mybreed		#Attribute assigned the value of 							        parameter
+
+
+
+
+
+
+my_dog=Dog(breed="Huskie")
+
+
+type(my_dog)                          OUTPUT:-  __main__.Dog
+
+my_dog.myattribute                    OUTPUT:-  Huskie 		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+*Adding more attributes to the class
+
+
+class Dog():
+
+	def __init__(self,breed,name,spots):
+
+		self.breed=breed
+		self.name=name
+
+		#Expected a boolean Value
+
+		self.spots=spots
+
+
+
+
+
+
+my_dog=Dog(breed="lab",name="sammy",spots="False")
+
+
+type(my_dog)				OUTPUT:- __main__.Dog
+
+my_dog.breed				OUTPUT:- lab
+
+my_dog.name				OUTPUT:- sammy
+
+my_dog.spots				OUTPUT:- False
+
+
+
+
+
+
+*Since Python is so flexible, later on when you are expecting other people to use your classes its essential that you add some documentation so that they know what kind of parameters is your class expecting
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+062 OOP- CLASS OBJECT ATTRIBUTES AND METHODS
+
+
+
+*There might be some attributes that are going to be the same for any instance of a class
+
+*For example: For the Dog() class, for every dog it is sure that every dog will be a mammal
+
+
+
+
+
+*So we declare it at the class object level. Instead of having a particular instance always say that the dog is a mammal, we define an attribute above our innit method
+
+*These class object attributes will be the same for any instance of a class
+
+
+
+
+
+*Whats special about these is that since we know its going to be the same for each instance of the class, we do not use the self keyword when assigning them because the self keyword is a reference to a particular instance of a class
+
+*When using them inside a method or a __init__ call we can refernce them either by saying:-
+
+
+self.pi		(i.e. self.<class_object_attribute>)
+
+
+OR
+
+
+Circle.pi        (i.e. <class_name>.<class_object_attribute>)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*METHODS
+
+
+
+-They are basically functions defined inside the body of a class and they are used to perform operations that sometimes use the actual attributes of the object we created
+
+-It is basically an action our object can take
+
+
+
+
+-The self keyword is placed inside the parenthesis when we define the bark() method to connect it to the actual object
+
+-One of the key difference between attributes and methods is in the way we call them. The attributes never have opening and closing parenthesis because its not something we execute, While methods will need to be executed so there needs to be opening and closing parenthesis
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Dog():
+    
+    #CLASS OBJECT ATTRIBUTE or CLASS VARIABLES
+    #SAME FOR ANY INSTANCE OF A CLASS
+    
+    species="mammal"
+    
+    def __init__(self,breed,name):
+
+        #INSTANCE VARIABLES
+	#DIFFERENT FOR EACH INSTANCE OF THE CLASS
+        self.breed=breed
+        self.name=name
+        
+     
+        
+        
+        
+    #OPERATIONS/ACTIONS -----> METHODS
+    
+    def bark(self):
+        
+        print("WOOF!")
+        
+        
+
+
+
+
+
+
+
+
+my_dog=Dog("Lab","Frankie")
+
+
+my_dog.bark()     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-Usually methods will use the information about the object itself
+
+EXAMPLE we are changing the bark() function so that it prints the name of the dog along with the woof
+
+
+
+def bark(self):
+	print("WOOF! my name is {}".format(self.name))
+
+
+
+
+
+
+
+-Now we passed self.name instead of only name because we need to refer to the particaular instance of the dog's name. Because when we pass the name in the beginning, it gets connected to the object through the use of the self keyword
+
+-So when we run the bark() method, Python will ask what is the dog's name for this particular instance of the dog object?. And it finds the name through the self.name call
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-Now methods can take outside arguments like this :
+
+
+
+
+def bark(self,number):
+	
+	print("Woof! my name is {} and number is {}".format(self.name,number))
+
+
+
+
+-Notice how number is not called as self.number because number is being provided to us by the user when we call bark() and it is not referencing some particular attribute for that instance of the class like breed or name
+
+-Basically to work with attributes you need the self keyword
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+063 OOP- INHERITANCE AND POLYMORPHISM
+
+
+
+*INHERITANCE
+
+-It is a way to form new classes from existing classes
+-Allows us to reuse code that you have already worked on
+-Reduces the complexity of the program
+
+
+EXAMPLE
+
+
+
+
+
+#BASE CLASS
+
+
+class Animal():
+    def __init__(self):
+        print("Animal created")
+        
+    def who_am_i(self):
+        print("I am an animal")
+        
+    def eat(self):
+        print("I am eating")
+
+
+
+
+
+
+#DERIVED CLASS
+
+
+class Dog(Animal):
+    
+    def __init__(self):
+        Animal.__init__(self)
+        print("Dog created")
+        
+        
+    def who_am_i(self):
+        print("I am a dog")
+        
+        
+    def eat(self):
+        print("I am a dog and eating")
+        
+    
+    def bark(self):
+        print("Woof")
+        
+        
+
+
+
+
+
+
+
+
+POINTS TO NOTE:-
+
+
+-Newly formed classes can use the base class to inherit some of its methods that you may want to use again
+
+
+
+-By putting "Animal" in class Dog(Animal), the "Dog" class inherits from the "Animal"(base)class and is knows as the derived class
+
+
+
+-Now in the __init__ of "Dog" we called the __init__ of "Animal" class as well. So when we create an instance of the "Dog" class, an instance of the "Animal" class is created as well and we are able to do that because the "Dog" class is inheriting from the "Animal" class
+
+
+
+-If you want to override one of the older methods in the "Animal"(base) class, you can just redefine them in the "Dog" class as we did with the who_am_i() function
+
+
+
+-You can also add on methods like the bark() method we added to the "Dog" class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mydog=Dog()
+
+OUTPUT:-  Animal Created
+	  Dog Created
+
+
+
+
+POINTS TO NOTE:-
+
+-When I run this command, we also see "Animal Created" in the output, because when the init method of "Dog" class is called, the init method of "Animal" class is called as well which prints "Animal Created".
+
+-After the execution of the init method of the "Animal" class, the execution of rest of the init method of the "Dog" class continues and that is why "Dog created" is printed as well
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*POLYMORPHISM
+
+-Refers to the way different object classes can share the same method name and those methods can be called from the same place even though a variety of different objects might be passed in
+
+
+
+
+
+EXAMPLE
+-Here, we have a dog class and a cat class. Each of them has a speak() method. When called, each object's speak method returns a result unique to the object i.e. it is unique for a dog to say woof and for a cat to say meow
+
+NOTE- The names are going to be unique to that particular instance of the class
+
+
+
+
+class Dog():
+    
+    def __init__(self,name):
+        self.name=name
+        
+    def speak(self):
+        return self.name + " says Woof!"
+
+
+
+
+
+
+class Cat():
+    
+    def __init__(self,name):
+        self.name=name
+        
+    def speak(self):
+        return self.name + " says meow!"
+
+
+
+
+
+niko= Dog("Niko")
+felix= Cat("Felix")
+
+
+
+
+
+
+
+
+
+
+
+
+niko.speak()						felix.speak()
+
+
+OUTPUT:- Niko says woof				        Felix says meow
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-WAYS TO REPRESENT POLYMORPHISM
+
+
+1. for item in [niko,felix]:
+    print(type(item))
+    print(item.speak())
+
+
+
+OUTPUT:- <class '__main__.Dog'>
+	 Niko says Woof!
+	 <class '__main__.Cat'>
+	 Felix says meow!
+
+
+
+
+EXAPLANTION:- Both niko and felix share the same method name called speak(). However they 	      belong to different types (one belongs to Dog() class and one belongs to Cat() 	      class) and they also print differnt stuff
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. def pet_speak(pet):
+    
+    print(pet.speak())
+
+
+
+
+   		pet_speak(niko)				pet_speak(felix)
+
+OUTPUT:-        Niko says woof				Felix says meow!
+		
+
+
+
+
+
+
+
+
+EXPLANATION:- pet_speak itself does not know whether the object we will pass will be a of a 	              Dog() class or a Cat() class but we happen to use a method that is common to 	              both the classes and we get different object specific results
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*ABSTRACT CLASSES
+-It is a class whose instance is never expected to be created. Instead its designed to only serve as the base class
+
+
+-For example, the animal class below is an abstract class and when we create an instance of this class  (WHICH WAS NOT EXPECCTED) and use its method as myanimal.speak(), an error is raised which tell us to use a subclass to implememt the abstract method
+
+
+-The speak() method inside the "Animal" class is an abstract method because it itself is not doing anything. Instead, its expecting you to inherit the "Animal" class an override the speak() method
+
+
+
+EXAMPLE
+
+
+class Animal():
+    
+    def __init__(self,name):
+        self.name=name
+        
+    def speak(self):
+        raise NotImplementedError("Subclass must implement this abstract method")
+        
+
+
+
+
+
+myanimal=Animal("Freed")
+
+myanimal.speak()
+
+
+
+
+
+
+
+
+OUTPUT:-
+
+---------------------------------------------------------------------------
+NotImplementedError                       Traceback (most recent call last)
+<ipython-input-18-188713a00ef6> in <module>
+----> 1 myanimal.speak()
+
+<ipython-input-16-2718552e0b97> in speak(self)
+      5 
+      6     def speak(self):
+----> 7         raise NotImplementedError("Subclass must implement this abstract method")
+      8 
+
+NotImplementedError: Subclass must implement this abstract method
+
+​
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-Here is what you are expected to do:
+
+
+
+
+class Dog(Animal):
+    def speak(self):
+        return self.name+" woof"
+
+
+
+
+class Cat(Animal):
+    def speak(self):
+        return self.name+" meow"
+
+
+
+fido=Dog("Fido")
+isis=Cat("Isis")
+
+
+
+
+
+
+
+
+
+		fido.speak()                          isis.speak()
+
+OUTPUT:	         Fido woof			       Isis meow	 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+064 OOP- SPECIAL (MAGIC DUNDER) METHODS
+
+*Special methods allows us to use some built-in operations in Python (eg len , print()) with our own user created objects 
+
+
+
+
+*EXAMPLE
+
+-Here,you have created a list and called a len functon on it to get the length of the list
+
+-However, if you try to get the length of a user-defined object (in this case mysample), you  get an error
+
+-And if you use a print() function on mysample, it will just give you the location where  your object is located 
+
+
+
+
+
+
+mylist=[1,2,3]
+len(mylist)                            OUTPUT:- 3
+
+
+
+
+
+
+
+
+
+class Sample():
+    pass
+
+
+mysample=Sample()
+len(mysample)                     
+
+
+
+
+
+OUTPUT:-
+
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-6-97b353a42cb3> in <module>
+----> 1 len(mysample)
+
+TypeError: object of type 'Sample' has no len()
+
+
+
+
+
+
+
+
+
+
+print(mysample)
+
+
+
+OUTPUT:-
+
+
+<__main__.Sample object at 0x000001F9C6A05BE0>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-To use built-in functions like print(), len with our user-defined object, we use special  methods
+
+
+-They use double underscores
+
+
+-When you call a print function (print(b)), it askes what is the string representation of b.  So to use print() with our object, we use the special method __str__
+
+
+
+
+
+
+
+
+__str__ 
+
+
+-What it does is whenever there is a function that asks for the string  representation of  your "book" class, its going to return whatever the contents of  __str__ are 
+
+-So when the print(b) funciton is called, it asks the book object "Hey do you  have a string  representation of yourself?" to which the book object says "yes I do" because of the  special __str__ method 
+          
+
+
+
+
+__len__
+
+-It is a similar special method to use the len method. Here, you can put anything that you  want to print out when the len method is called on the object
+
+
+
+
+
+
+__del__
+
+-The del method is used to delete an object/variables from the memory:
+
+     del b
+ 
+-Sometimes you may want to return a message or want some other thing to occur when an object  is deleted and for that we use the spcial method __del__
+
+
+
+
+
+
+__init__
+
+-It is also a special method and is called automatically when you create an instance of the  object 
+
+
+
+
+
+
+
+__repr__
+
+- This also returns the string reresentation of the object 
+
+- However, `__str__` function is supposed to return a human-readable format which is good for logging or to display some information about the object
+
+- Wheras the `__repr__` function is supposed to return a more information rich and machine friendly representation that can be used to reconstruct the object
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+IMPORTANT NOTE:- The __str__ and __len__ method MUST RETURN THERE RESPECECIVE DATA TYPES 
+                 (str for __str__ and int for __len__) if you simply use print it will show                  an error
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Book():
+    
+    def __init__(self,title,author,pages):
+        
+        self.title=title
+        self.author=author
+        self.pages=pages
+        
+    def __str__(self):
+        return f"{self.title} by {self.author}"
+    
+    
+    def __len__(self):
+        return self.pages
+    
+    
+    def __del__(self):
+        print("A book object has been deleted")
+
+
+
+
+
+b=Book("Python Rocks","Jose",200)
+
+print(b)
+
+OUTPUT:- Python Rocks by Jose
+
+
+len(b)
+
+OUTPUT:- 200
+
+
+del b
+
+OUTPUT:- A book object has been deleted 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+065 OOP- HOMEWORK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ *IN TERMINAL*
+
+
+
+069 PIP INSTALL AND PyPi
+
+*PyPi is a repository for open source third-party Python pacakges
+
+*It is similar to RubyGems in the Ruby world, PHP's Packagist, CPAN for Perl and NPM for Node.js
+
+
+
+
+*So far we have only used the built-in libraries that come internally with Python
+
+*There are many other libraries available that people have open-sourced and shared on PyPi
+
+*We can use pip install at the command line to install these packages 
+
+
+
+
+*pip is a simple way to download packages at your command line directly from the PyPi repository 
+
+
+
+
+
+*GENERAL SYNTAX
+
+
+
+ pip install <package_name>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*IN VS CODE*
+
+
+
+
+070 MODULES AND PACKAGES
+
+*We will be writing our own modules and packages 
+
+*Modules are just .py scripts that you call in another .py script while packages are a collection of modules 
+
+
+
+
+
+*IMPORTING FROM A MODULE
+
+ -SYNTAX
+
+    from <module_name> import <function>
+
+    function()
+
+
+
+
+
+
+
+
+*If you have a really large script, its better you don't put everything in a large .py file instead it would be better if you split it up between multiple .py files (modules)
+
+*We can aggregate different modules to create a package for more advaced organisation 
+
+
+
+
+
+
+
+
+*Now when you will be creating a package using the tutorial, you will have to make a bunch of folders like "MyMainPackage" and "SubPackage"
+
+*Now since these are just folders, we need to let Python know that we want to treat these folders not just as a normal folder but as an actual package 
+
+*To do that inside the "MyMainPackage" and "SubPackage" folder you will have to create a special file "__init__.py"
+
+*You don't actually need to write anything in this file, it just needs to be there so that when Python goes searching through these packages, it understands that it is not just a normal folder, it is a package 
+
+
+
+
+
+
+
+
+*"myprogram.py" can be imagined as the main .py script that we want to run 
+
+*We will be importing from various modules but for better organisation its better if you aggregate various modules into packages 
+
+*Packages are a special directory that have the "__init__.py" file inside along with different modules
+
+
+
+
+
+
+
+
+
+*IMPORTING FROM A PACKAGE
+
+ -From "MyMainPackage"
+
+
+     from MyMainPackage import some_main_script
+
+     some_main_script.function()
+
+
+
+
+ -From "SubPackage"
+
+
+     from MyMainPackage.SubPackage import my_sub_script
+
+     my_sub_script.function()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+071 __name__ and __main__
+
+
+*An often confusing part of Python is a mysterious line of code
+
+  if __name__ == "__main__":
+
+
+
+
+
+
+
+*Sometimes when you are importing from a module, you would like to know whether a module's function is being used as an import, or if you are using the original .py file of that module 
+
+
+*When you call a .py script in terminal, all of the code at indentation level 0 is going to get run. Functions and classes are automatically defined at indentation level 0 so they get defined as well 
+
+
+*So unlike other languages, Python does not have any main() function that you call at the top of your script that gets run automatically
+
+
+*Instead all the code at indentation level 0 gets run when you call the script file 
+
+
+
+
+
+
+
+
+
+
+*In python there is built-in variable called __name__ which gets assigned to a string depending on how you are running the actual script and if you run the script directly (means going in the terminal and writing "python one.py") following opeartion will happen in the background:
+
+
+ __name__= "__main__"
+
+
+
+*So we can have an if block to check if a .py file is being run directly or not:
+
+ if __name__=="__main__":
+   myfunc()
+
+
+
+*So what people do to organise their codes better is first define all the functions they need and at the bottom of the file they put this if condition and call all the defined functions in that if block
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+072 ERRORS AND EXCEPTIONS HANDLING 
+
+
+*We can use Error Handling to attempt to plan for possible errors 
+
+*Currently if there is any type of error in your code, the entire script will stop
+
+*We can use Error handling to let the script continue with other code, even if there is an  error 
+
+
+
+
+
+*We use three keywords for this:
+
+ -try: This is the block of code to be attempted (may lead to an error)
+ 
+ -except: The block of code which will execute in case there is an error in try block
+
+ -finally: A final block of code to be executed, regardless of an error
+
+
+
+
+
+try:
+    # WANT TO ATTEMPT THIS CODE
+    # MAY HAVE AN ERROR
+    result= 10+10
+    
+    
+except:
+    # EXECUTED WHEN THERE IS AN ERROR IN
+    # THE TRY BLOCK
+    print("Hey it looks like you aren't adding correctly!!")
+    
+
+result
+
+
+
+
+
+OUTPUT:- 20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+try:
+    # WANT TO ATTEMPT THIS CODE
+    # MAY HAVE AN ERROR
+    result= 10+ "10"
+    
+    
+except:
+    # EXECUTED WHEN THERE IS AN ERROR IN
+    # THE TRY BLOCK
+    print("Hey it looks like you aren't adding correctly!!")
+
+else:
+    #IF THERE IS NO ERROR IN THE TRY BLOCK
+    print("Add Went well")
+    print(result)
+
+
+
+
+
+
+OUTPUT:- Hey it looks like you aren't adding correctly!
+
+
+
+
+
+*As you can see the rest of the code was able to run with the except statement even though  we encountered an error.  Our program does not shut down entirely when an error is  encountered. 
+
+*Now if you just put a colon after except, the except block will be run for any error  encountered. However, there are many types of errors which you can specifically accept for
+
+*You can have a number of `except` statements covering different errors 
+
+
+
+
+
+
+
+
+
+
+
+try:
+    f= open("testfile","w")
+    f.write("Write a test line")
+    
+except TypeError:
+    #WILL BE RUN ONLY IF THERE IS A TYPE ERROR
+    #IN THE TRY BLOCK
+    print("There was a type error")
+    
+except OSError:
+    #WILL BE RUN ONLY IF THERE IS A 
+    #OS ERROR
+    print("Hey you have an OS error")
+    
+finally:
+    #ALWAYS EXECUTED NO MATTER WHAT
+    print("I always run")
+
+
+
+
+OUTPUT:- I always run 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+try:
+    f= open("testfile","r")
+    f.write("Write a test line")
+    
+except TypeError:
+    #WILL BE RUN ONLY IF THERE IS A TYPE ERROR
+    #IN THE TRY BLOCK
+    print("There was a type error")
+    
+except OSError:
+    #WILL BE RUN ONLY IF THERE IS A 
+    #OS ERROR
+    print("Hey you have an OS error")
+    
+finally:
+    #ALWAYS EXECUTED NO MATTER WHAT
+    print("I always run")
+
+
+
+
+
+OUTPUT:- Hey you have an OS error
+         I always run
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+try:
+    f= open("testfile","r")
+    f.write("Write a test line")
+    
+except TypeError:
+    #WILL BE RUN ONLY IF THERE IS A TYPE ERROR
+    #IN THE TRY BLOCK
+    print("There was a type error")
+    
+except:
+    #WILL BE RUN FOR ALL OTHER 
+    #EXCEPTIONS
+    print("All other exceptions")
+    
+finally:
+    #ALWAYS EXECUTED NO MATTER WHAT
+    print("I always run")
+
+
+
+
+
+
+
+
+OUTPUT:- All other exceptions
+         I always run
+
+
+*Since there is no TypeError,  the second `except` block is executed followed by the  `finally` block 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def ask_for_int():
+    try:
+        result=int(input("Please Provide a Number: "))
+        
+    except:
+        print("Whoops! that is not an integer")
+        
+    finally:
+        print("End of try/except/finally")
+
+
+ask_for_int()
+
+
+OUTPUT:- Please Provide a Number: 20
+         End of try/except/finally
+
+
+
+
+
+*When we provide a valid number we only get the result of the `finally` block because we are  successfully able to cast 20 into an integer 
+
+
+
+
+
+
+
+
+
+
+
+ask_for_int()
+
+
+OUTPUT:- Please Provide a Number: Word
+         Whoops! that is not an integer
+         End of try/except/finally
+
+
+
+
+*An error is produced because we can't cast a string to an integer and that is why the  `except` block is executed followed by the `finally` block 
+
+
+
+
+
+
+
+
+
+
+
+
+
+*We are going to adjust the code such that instead of just ending after you input something  wrong, we are going to put it in a while loop that keeps going over and over again until  you have a block of code with no exceptions 
+
+
+
+def ask_for_int():
+    
+    while True:
+        try:
+            result=int(input("Please Provide a Number: "))
+        
+        except:
+            print("Whoops! that is not an integer")
+            continue
+        else:
+            print("Yes thank you")
+            break
+    
+    
+        finally:
+            print("End of try/except/finally")
+            print("I will always run in the end")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+***IN VS CODE***
+
+075 PYLINT OVERVIEW
+
+
+*As you begin to expand to larger multi-file projects it becomes important to have tests in  place
+
+*This way as you make changes or update your code, you can run your test files to make sure  previous code still runs as expected
+
+*There are several testing tools, we will focus on two:-
+
+  -pylint: This is a library that looks at your code and reports back possible issues
+
+  -unittest: This built-in library will allow you to test your own programs and check if you              are getting desired outputs 
+
+
+
+
+*pylint can be used to check your code for possible errors and styling 
+
+*By styling, we mean the set of style convention rules of Python known as "PEP-8"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*INSTALLING PYLINT
+
+   pip install pylint
+
+
+
+
+
+*USING PYLINT IN TERMINAL
+
+ - If you are using a newer version of pylint, the report sections is disabled by default so    you have to activate it manually
+
+      pylint simple1.py --reports=yes
+
+ -You will get a lot of information about your code and in the end you will get a rating
+
+ -It is better not to mix white spaces and tabs (mixed indentation). Pylint does not like     mixed indentation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+***IN VS CODE***
+
+076 RUNNING TESTS WITH UNITTEST LIBRARY
+
+
+*The unittest library allows you to write your own test programs
+
+
+.capitalize() :- Upper cases the first letter 
+
+.title() :- Upper cases the first letter of every word 
+
+
+
+*It is better to test simple things first followed by the complicated things
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+077-081 MILESTONE PROJECT 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+082 DECORATORS
+
+
+*Imagine you created a simple function:-
+
+ def simple_func():
+	#Do simple stuff
+	return something
+
+
+
+
+
+
+
+
+*Now you want to add more functionality to it. What you can do is add more code to the   original function while keeping the old code intact:-
+
+ def simple_fun():
+	#Do more stuff
+	#Do simple stuff
+	return something
+
+*But if you do this, you will no longer be able to call your original function
+
+
+
+
+
+
+
+
+*OR you can create a brand new function that contains the old code, and then add new code to  it 
+
+*The problem with this is that now you have to recreate the entire funtion all over again  which is not ideal
+
+
+
+
+
+
+
+
+
+*After using any of the above methods, what if in the future you want to remove that new  functionality?
+
+*You would need to delete the new code manually or make sure that you that you have the old  function available
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*Python has decorators that allow you to tack on extra functionality to an already existing  function 
+
+*They use the @opeartor and are then placed on top of the original function 
+
+*Now you can easily add on extra functionality with a decorator:-
+
+
+ @some_decorator
+
+ def simple_func():
+	#Do simple stuff
+	return something 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*ASSIGNING FUNCTIONS TO VARIABLES 
+
+ -When you define a function and call it without (), you only get the information about the   function and you are not actually executing it 
+
+ -You can use this functionality to assign functions to other variables and then execute       them off that variable 
+
+
+
+  def hello():
+	return "Hello!"
+
+
+  greet=hello
+  greet()
+
+
+
+  OUTPUT:- 'Hello!'
+
+
+
+  del hello
+  greet()
+
+
+
+  OUTPUT:- 'Hello!'
+
+
+
+ -Even though we deleted the name hello, the name greet still points to our original           function object. It is important to know that functions are objects that can be passed to    other objects. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*FUNCTIONS WITHIN FUNCTIONS
+
+
+ def hello(name="Jose"):
+    print("The hello() function has been executed")
+    
+    def greet():
+        return "\t This is the greet() function inside hello!"
+    
+    def welcome():
+        return "\t This is welcome() inside hello!"
+    
+    print(greet())
+    print(welcome())
+    print("This is the end of the hello function")
+
+
+
+ hello()
+
+ OUTPUT: The hello() function has been executed
+	 	This is the greet() function inside hello!
+	 	This is welcome() inside hello!
+	  This is the end of the hello function
+
+ 
+
+
+ -greet() and welcome() are defined inside the hello function. Which means their scope is   limited to the hello function. greet() and welcome() can only be executed inside hello
+
+
+ -In order to access them outside hello, we will have to return them 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*RETURNING FUNCTIONS
+
+
+ -We will be returning a function and assigning it to a variable 
+
+
+  
+ def hello(name="Jose"):
+    print("The hello() function has been executed")
+    
+    def greet():
+        return "\t This is the greet() function inside hello!"
+    
+    def welcome():
+        return "\t This is welcome() inside hello!"
+    
+    print("I am going to return a function!!")
+    
+    if name == "Jose":
+        return greet
+    else:
+        return welcome
+
+
+
+
+
+ my_new_func = hello("Jose")
+
+
+ OUTPUT:- The hello() function has been executed
+	  I am going to return a function!!
+
+
+
+
+
+
+ -my_new_func is now pointing to the greet() function inside hello
+
+ 
+
+
+
+
+  print(my_new_func())
+
+
+  OUTPUT:-	This is the greet() function inside hello!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*FUNCTIONS AS ARGUMENTS 
+
+ def hello():
+	print("Hi jose!")
+
+ def other(some_defined_func):
+	print("Other code runs here")
+	print(some_defined_func())
+
+
+
+
+
+ other(hello)
+
+
+
+
+ OUTPUT:- Other code runs here
+	  Hi Jose!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*CREATING A DECORATOR
+
+
+
+ def new_decorator(original_func):
+    
+    ##EXTRA FUNCTIONALITY TO BE ADDED TO THE ORIGINAL FUNCTION
+    def wrap_func():
+        
+        print("Some extra code before the original function")
+        
+        original_func()
+        
+        print("Some extra code after the original function")
+        
+    return wrap_func
+
+ 
+
+
+
+ def func_needs_decorator():
+    print("I want to be decorated!")
+
+
+
+
+
+ decorated_function = new_decorator(func_needs_decorator)
+
+
+
+
+
+ decorated_function()
+
+
+ OUTPUT:- Some extra code before the original function
+	  I want to be decorated!
+	  Some extra code after the original function
+  
+
+
+
+
+
+
+ -The `new_decorator()` function is taking in the `function_needs_decorator` as the       `original_func` and then it returns a wrapped version of the `original_func` with the       added functionality
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ @new_decorator          
+
+ def func_needs_decorator():
+    print("I want to be decorated!")
+
+
+
+
+
+
+ func_needs_decorator()
+
+
+ OUTPUT:- Some extra code before the original function
+	  I want to be decorated!
+	  Some extra code after the original function
+
+
+
+
+
+
+ -What the `@new_decorator` keyword is doing when you put it on top of a function, is that   it will pass the function as an argument to the `new_decorator()` function, add some extra   functionality to it, wrap it in a function and then returns the wrapped version of the     function
+
+
+
+
+
+
+ -And if at any point you want to turn off that additional functionality, you can just   remove `@new_decorator`
+
+  Generally, you won't be doing the coding of the `new_decorator()` , `wrap_func()` etc. You   will be adding decorator from existing libraries 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+083 DECORATORS HOMEWORK
+
+A framework is a type of software library that provides generic functionality which can be extended by the programmer to build applications. Flask and Django are good examples of framework intended for web development.
+
+A framework is distinguished from a simple library or API. An API is a piece of software that a developer can use in his or her application.
+
+A framework is more encompassing: your entire application is structured around the framework (i.e. it provides the framework around which you build your software)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+084 GENERATORS
+
+*A generator in Python allows us to generate a sequence of values overtime instead of  creating an entire sequence and holding it in memory. The main difference in syntax will be  the use of the yield statement 
+
+*A generator function when compiled doesn't actually return a value and then exits. Instead   generator functions will automatically suspend and resume their execution from the last  point of value generation
+
+*The advantage is that instead of having to compute an entire series of values up front and  hold it in memory, the  generator computes one value and waits until the next value is  called for 
+
+
+
+
+FOR EXAMPLE
+
+The range() function doesn't produce a list in memory for all the values from start to stop
+
+Instead it just keeps track of the last number and the step size to provide a flow of numbers
+
+So basically it generates numbers overtime instead of having a giant list in memory 
+
+
+
+
+
+
+
+*If the user needs the list, they can transform the generator to a list like this :-
+  
+    list(range(0,10))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*INEFFICIENT FUNCTION
+
+
+def cube(n):
+    result=[]
+    for item in range(n):
+        result.append(item**3)
+        
+    return result
+
+
+cube(10)
+
+
+
+OUTPUT:- [0, 1, 8, 27, 64, 125, 216, 343, 512, 729]
+
+
+
+
+-This giant list is actually stored in the memory. It is useful when you actually need the  list but if you only need to view the results, having an entire list in the memory is very  inefficient
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*CONVERTING IT INTO A GENERATOR
+
+
+def cube(n):
+    for item in range(n):
+        yield item**3
+
+
+
+for item in cube(10):
+    print(item)
+
+
+
+OUTPUT
+
+0
+1
+8
+27
+64
+125
+216
+343
+512
+729
+
+
+
+
+
+-The result is same but now `cube()` is very memory efficient. It is generating the values  as you need them.
+
+-When you call `cube()` by itself, you no longer see that list. You need to iterate through  the genrator object to actually get the numbers.
+
+-If you want the actual list, you can just cast it as well
+
+
+
+
+
+
+cube(10)
+
+OUTPUT:- <generator object cube at 0x0000019D4FF91AC0>
+
+
+
+list(cube(10))
+
+OUTPUT:- [0, 1, 8, 27, 64, 125, 216, 343, 512, 729]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*FIBINACCI SEQUENCE GENERATOR
+
+
+def fibo(n):
+    a=1
+    b=1
+    
+    for item in range(n):
+        yield a
+        a,b = b,a+b
+    
+
+
+
+
+for item in fibo(10):
+    print(item)
+
+
+
+
+OUTPUT
+
+
+
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*NEXT() FUNCTION 
+
+
+
+
+def simple_gen():
+    for item in range(3):
+        yield item
+
+
+
+
+for x in simple_gen():
+    print(x)
+
+
+
+g = simple_gen()
+
+
+
+g
+
+
+OUTPUT:- <generator object simple_gen at 0x0000019D4FF86F20>
+
+
+
+
+
+next(g)
+
+OUTPUT:- 0
+
+
+next(g)
+
+OUTPUT:- 1
+
+
+next(g)
+
+OUTPUT:- 2
+
+
+next(g)
+
+OUTPUT:-StopIteration                             Traceback (most recent call last)
+	<ipython-input-29-e734f8aca5ac> in <module>
+	----> 1 next(g)
+
+	StopIteration: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+-This is what the generator object is doing internally when you call the yield keyword. Its  remembering the previous value and then returns the next value depending on what formula it  is following 
+
+-After yielding all the values, next() calls the StopIteration error to inform us all the  values that have been yielded 
+
+-A for loop (when iterating through a generator) automatically catches this error and stops   calling next 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*ITER FUNCTION
+
+
+ -iter() function allows you to automatically iterate through a normal obeject that you may    not expect
+
+ -Allows you to convert objects that are iterable into iterators 
+
+
+
+
+
+
+
+
+
+s="hello"
+
+
+for letter in s:
+    print(letter)
+
+
+
+OUTPUT:- h
+         e
+	 l
+	 l
+	 o
+
+
+
+
+
+next(s)
+
+
+
+OUTPUT
+
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-33-61c30b5fe1d5> in <module>
+----> 1 next(s)
+
+TypeError: 'str' object is not an iterator
+
+
+
+
+
+
+
+
+
+
+
+-String objects do support iteration but we cannot directly iterate over it like we did   with a generator using the `next()`function. In order to turn the string into a generator  that we can iterate over, we will do this :-
+
+
+
+s_iter = iter(s)
+
+
+next(s_iter)
+
+OUTPUT:- h
+
+
+next(s_iter)
+
+OUTPUT:- e
+
+
+next(s_iter)
+
+OUTPUT:- l
+
+
+next(s_iter)
+
+OUTPUT:- l
